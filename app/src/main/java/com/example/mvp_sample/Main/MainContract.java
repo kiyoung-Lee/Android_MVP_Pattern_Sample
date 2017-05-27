@@ -18,6 +18,10 @@ public interface MainContract {
 
         void setActivityView(ActivityView activityView);
 
+        void setAdapterModel(MainAdapterContract.Model adapterModel);
+
+        void setAdapaterView(MainAdapterContract.View adapaterView);
+
         @Override
         void start();
     }
