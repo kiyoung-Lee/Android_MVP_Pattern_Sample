@@ -14,7 +14,7 @@ public class MainPresenter implements MainContract.Presenter {
     private MainContract.ActivityView activityView;
 
     public MainPresenter(MainDataSource repository) {
-        checkNotNull(repository, "Repositoy Is Null");
+        checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
 
