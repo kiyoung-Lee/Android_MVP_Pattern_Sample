@@ -6,13 +6,13 @@ import java.util.List;
  * Created by kiyoung Lee on 2017-05-20.
  */
 
-public interface MainDataSource {
+public interface MainRepository {
 
     interface LoadListCallBack{
-        void onListLoaded(List<MainData> alramList);
+        void onListLoaded(List<MainData> dataList);
 
         void onDataNotAvailable();
     }
 
-    void getList(LoadListCallBack callBack);
+    void getDataList(LoadListCallBack callBack);
 }

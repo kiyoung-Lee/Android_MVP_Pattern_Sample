@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.mvp_sample.Main.Data.MainDataRepository;
+import com.example.mvp_sample.Main.Data.MainRepositoryImp;
 import com.example.mvp_sample.R;
 
 import butterknife.BindView;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Acti
         mainList.setLayoutManager(new LinearLayoutManager(this));
         mainList.setAdapter(adapter);
 
-        presenter = new MainPresenterImp(new MainDataRepository());
+        presenter = new MainPresenterImp(new MainRepositoryImp());
         presenter.setActivityView(this);
         presenter.setAdapterModel(adapter);
         presenter.setAdapaterView(adapter);

@@ -9,15 +9,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Created by kiyoung Lee on 2017-05-20.
  */
 
-public class MainDataRepository implements MainDataSource {
+public class MainRepositoryImp implements MainRepository {
 
     private List<MainData> mainDataList;
 
-    public MainDataRepository() {
+    public MainRepositoryImp() {
     }
 
     @Override
-    public void getList(LoadListCallBack callBack) {
+    //Unit Test: getDataList_Test(), getDataList_Null_Test()
+    public void getDataList(LoadListCallBack callBack) {
         checkNotNull(callBack, "CallBack Is Null");
         mainDataList = new ArrayList<>();
         MainData addItem1 = new MainData("test1", "test1", "test1");
