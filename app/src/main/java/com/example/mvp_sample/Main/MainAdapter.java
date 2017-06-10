@@ -23,7 +23,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainListViewHolder>
-                            implements MainAdapterContract.Model, MainAdapterContract.View{
+                            implements MainAdapterContract.Model<List<MainData>>, MainAdapterContract.View{
 
     private Context context;
     private MainContract.Presenter presenter;

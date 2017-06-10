@@ -11,10 +11,10 @@ import java.util.List;
 
 public interface MainAdapterContract {
 
-    interface Model {
+    interface Model<T> {
         void dataClear();
 
-        void replaceData(List<MainData> alramList);
+        void replaceData(T data);
     }
 
     interface View extends IBaseView<MainContract.Presenter> {
