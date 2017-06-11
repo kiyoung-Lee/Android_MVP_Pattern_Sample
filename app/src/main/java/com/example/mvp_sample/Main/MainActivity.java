@@ -22,14 +22,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.Acti
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_act);
         ButterKnife.bind(this);
 
         adapter = new MainAdapter(getApplicationContext());
         mainList.setLayoutManager(new LinearLayoutManager(this));
         mainList.setAdapter(adapter);
 
-        presenter = new MainPresenterImp(new MainRepositoryImp());
+        presenter = new MainPresenterImpl(new MainRepositoryImp());
         presenter.setActivityView(this);
         presenter.setAdapterModel(adapter);
         presenter.setAdapaterView(adapter);

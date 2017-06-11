@@ -5,7 +5,7 @@ import com.example.mvp_sample.Main.Data.MainRepository;
 import com.example.mvp_sample.Main.MainActivity;
 import com.example.mvp_sample.Main.MainAdapterContract;
 import com.example.mvp_sample.Main.MainContract;
-import com.example.mvp_sample.Main.MainPresenterImp;
+import com.example.mvp_sample.Main.MainPresenterImpl;
 
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ public class MainPresenterTest {
     public void constructor_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
         }catch (Exception ex){
             fail();
         }
@@ -31,7 +31,7 @@ public class MainPresenterTest {
     @Test
     public void constructor_Null_Test(){
         try{
-            MainContract.Presenter presenter = new MainPresenterImp(null);
+            MainContract.Presenter presenter = new MainPresenterImpl(null);
         }catch (NullPointerException ex){
             assertEquals(ex.getMessage(), "Repository Is Null");
         }catch (Exception ex){
@@ -43,7 +43,7 @@ public class MainPresenterTest {
     public void setActivityView_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             MainContract.ActivityView ActivityView = mock(MainActivity.class);
             presenter.setActivityView(ActivityView);
         }catch (Exception ex){
@@ -55,7 +55,7 @@ public class MainPresenterTest {
     public void setActivityView_Null_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             presenter.setActivityView(null);
         }catch (NullPointerException e){
             assertEquals(e.getMessage(), "Activity Is Null");
@@ -68,7 +68,7 @@ public class MainPresenterTest {
     public void setAdapterModel_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             MainAdapterContract.Model adapterModel = mock(MainAdapterContract.Model.class);
             presenter.setAdapterModel(adapterModel);
         }catch (Exception e){
@@ -80,7 +80,7 @@ public class MainPresenterTest {
     public void setAdapterModel_Null_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             presenter.setAdapterModel(null);
         }catch (NullPointerException e){
             assertEquals(e.getMessage(), "AdapterModel Is Null");
@@ -93,7 +93,7 @@ public class MainPresenterTest {
     public void setAdapterView_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             MainAdapterContract.View adapterView = mock(MainAdapterContract.View.class);
             presenter.setAdapaterView(adapterView);
         }catch (Exception e){
@@ -105,7 +105,7 @@ public class MainPresenterTest {
     public void setAdapterView_Null_Test(){
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
-            MainContract.Presenter presenter = new MainPresenterImp(dataSource);
+            MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             presenter.setAdapaterView(null);
         }catch (NullPointerException e){
             assertEquals(e.getMessage(), "AdapterView Is Null");

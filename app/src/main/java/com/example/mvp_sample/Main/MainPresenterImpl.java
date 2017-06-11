@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Created by kiyoung Lee on 2017-05-20.
  */
 
-public class MainPresenterImp implements MainContract.Presenter {
+public class MainPresenterImpl implements MainContract.Presenter {
 
     private MainRepository repository;
     private MainContract.ActivityView activityView;
@@ -19,7 +19,7 @@ public class MainPresenterImp implements MainContract.Presenter {
     private MainAdapterContract.View adapterView;
 
     //Unit Test : Constructor_Test(), Constructor_Null_Test()
-    public MainPresenterImp(MainRepository repository) {
+    public MainPresenterImpl(MainRepository repository) {
         checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
