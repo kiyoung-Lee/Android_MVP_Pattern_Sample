@@ -3,6 +3,8 @@ package com.example.mvp_sample.DynamicList.Adapter.ViewHolder;
 import android.content.Context;
 import android.view.View;
 
+import com.example.mvp_sample.R;
+
 /**
  * Created by KiyoungLee on 2017-06-11.
  */
@@ -16,9 +18,9 @@ public class DynamicViewHolderFactory {
         int resId = -1;
 
         if(viewType == LEFT_VIEW_TYPE){
-
+            return resId = R.layout.dynamic_left_holder;
         }else if(viewType == RIGHT_VIEW_TYPE){
-
+            return resId = R.layout.dynamic_right_holder;
         }
 
         return resId;
@@ -28,9 +30,9 @@ public class DynamicViewHolderFactory {
         ViewHolderContract holder = null;
 
         if(viewType == LEFT_VIEW_TYPE){
-
+            holder = new LeftViewHolder(context,itemView);
         }else if (viewType == RIGHT_VIEW_TYPE){
-
+            holder = new RightViewholder(context,itemView);
         }
 
         return holder;

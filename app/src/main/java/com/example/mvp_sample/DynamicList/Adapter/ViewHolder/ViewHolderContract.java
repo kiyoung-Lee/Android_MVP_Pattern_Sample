@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.mvp_sample.DynamicList.Data.Message;
 import com.example.mvp_sample.DynamicList.DynamicContract;
 
 
@@ -24,9 +25,10 @@ public abstract class ViewHolderContract extends RecyclerView.ViewHolder {
         this.context = context;
     }
 
+    public abstract void bind(Message messageData);
+
     public void setPresenter(DynamicContract.Presenter presenter) {
         checkNotNull(presenter, "Presenter Is Null");
         this.presenter = presenter;
     }
-
 }

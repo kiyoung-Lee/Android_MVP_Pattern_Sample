@@ -4,24 +4,29 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mvp_sample.DynamicList.Adapter.ViewHolder.DynamicViewHolderFactory;
 import com.example.mvp_sample.DynamicList.Adapter.ViewHolder.ViewHolderContract;
-import com.example.mvp_sample.DynamicList.Data.DynamicData;
+import com.example.mvp_sample.DynamicList.Data.Message;
 import com.example.mvp_sample.DynamicList.DynamicAdapterContract;
 import com.example.mvp_sample.DynamicList.DynamicContract;
+
+import java.util.List;
+import java.util.zip.Inflater;
 
 /**
  * Created by KiyoungLee on 2017-06-10.
  */
 
 public class DynamicListAdapter extends RecyclerView.Adapter<ViewHolderContract>
-                                implements DynamicAdapterContract.Model<DynamicData>,
-                                            DynamicAdapterContract.View{
+                                implements DynamicAdapterContract.Model<List<Message>>, DynamicAdapterContract.View{
 
     private Context context;
     private DynamicContract.Presenter presenter;
-    private DynamicData data;
+    private List<Message> messageList;
 
     public DynamicListAdapter(Context context) {
         checkNotNull(context, "Context Is Null");
@@ -30,6 +35,9 @@ public class DynamicListAdapter extends RecyclerView.Adapter<ViewHolderContract>
 
     @Override
     public int getItemCount() {
+        if(messageList != null){
+            return messageList.size();
+        }
         return 0;
     }
 
@@ -45,18 +53,28 @@ public class DynamicListAdapter extends RecyclerView.Adapter<ViewHolderContract>
     }
 
     @Override
-    public void replaceData(DynamicData data) {
-        checkNotNull(data, "DynamicData Is Null");
-        this.data = data;
+    public void replaceData(List<Message> data) {
+        checkNotNull(data, "MessageList Is Null");
+        this.messageList = data;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        checkNotNull(messageList, "MessageList Is Null");
+        return messageList.get(i).getViewType();
     }
 
     @Override
     public ViewHolderContract onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        int resId = DynamicViewHolderFactory.getViewLayoutId(viewType);
+        View v = LayoutInflater.from(context).inflate(resId, parent);
+        ViewHolderContract holder = DynamicViewHolderFactory.getViewHolder(viewType, context, v);
+        holder.setPresenter(presenter);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolderContract holder, int position) {
-
+        holder.bind(messageList.get(position));
     }
 }
