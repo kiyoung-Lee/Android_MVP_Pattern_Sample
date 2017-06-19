@@ -1,4 +1,4 @@
-package com.example.mvp_sample.DynamicList.Adapter.ViewHolder;
+package com.example.mvp_sample.DynamicList.ViewHolder;
 
 import android.content.Context;
 import android.view.View;

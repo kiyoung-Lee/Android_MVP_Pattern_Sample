@@ -1,5 +1,6 @@
 package MainTest;
 
+import com.example.mvp_sample.Common.BaseAdapter;
 import com.example.mvp_sample.Main.Data.MainRepositoryImp;
 import com.example.mvp_sample.Main.Data.MainRepository;
 import com.example.mvp_sample.Main.MainActivity;
@@ -69,7 +70,7 @@ public class MainPresenterTest {
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
             MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
-            MainAdapterContract.Model adapterModel = mock(MainAdapterContract.Model.class);
+            BaseAdapter.Model adapterModel = mock(BaseAdapter.Model.class);
             presenter.setAdapterModel(adapterModel);
         }catch (Exception e){
             fail();
@@ -94,7 +95,7 @@ public class MainPresenterTest {
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
             MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
-            MainAdapterContract.View adapterView = mock(MainAdapterContract.View.class);
+            BaseAdapter.View adapterView = mock(BaseAdapter.View.class);
             presenter.setAdapaterView(adapterView);
         }catch (Exception e){
             fail();

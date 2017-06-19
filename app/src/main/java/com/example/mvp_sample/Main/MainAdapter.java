@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.R;
 
@@ -23,7 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainListViewHolder>
-                            implements MainAdapterContract.Model<List<MainData>>, MainAdapterContract.View{
+                            implements BaseAdapter.Model<List<MainData>>, BaseAdapter.View{
 
     private Context context;
     private MainContract.Presenter presenter;
@@ -45,16 +47,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainListViewHo
 
     @Override
     //UI Test: setPresenter_Test(), setPresenter_Null_Test()
-    public void setPresenter(MainContract.Presenter presenter) {
+    public void setPresenter(BasePresenter presenter) {
         checkNotNull(presenter, "Presenter Is Null");
-        this.presenter = presenter;
-    }
-
-    @Override
-    //UI Test: dataClear_Test(), dataClear_Null_Test()
-    public void dataClear() {
-        checkNotNull(alramList, "AlramList Is Null");
-        alramList.clear();
+        this.presenter = (MainContract.Presenter) presenter;
     }
 
     @Override

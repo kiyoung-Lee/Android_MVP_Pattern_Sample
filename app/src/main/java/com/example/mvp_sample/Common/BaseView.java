@@ -1,10 +1,10 @@
-package com.example.mvp_sample;
+package com.example.mvp_sample.Common;
 
 /**
  * Created by User on 2016-12-21.
  */
 
-public interface IBaseView<T> {
+public interface BaseView<T> {
 
     void setPresenter(T presenter);
 }

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.mvp_sample.DynamicList.Adapter.DynamicPagerAdapter;
 import com.example.mvp_sample.DynamicList.Data.DynamicDataRepositoryImpl;
 import com.example.mvp_sample.R;
 

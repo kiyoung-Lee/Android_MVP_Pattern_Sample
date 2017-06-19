@@ -1,7 +1,8 @@
 package com.example.mvp_sample.Main;
 
-import com.example.mvp_sample.IBasePresenter;
-import com.example.mvp_sample.IBaseView;
+import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BasePresenter;
+import com.example.mvp_sample.Common.BaseView;
 
 /**
  * Created by kiyoung Lee on 2017-05-20.
@@ -9,18 +10,18 @@ import com.example.mvp_sample.IBaseView;
 
 public interface MainContract {
 
-    interface ActivityView extends IBaseView<Presenter> {
+    interface ActivityView extends BaseView<Presenter> {
         @Override
         void setPresenter(Presenter presenter);
     }
 
-    interface Presenter extends IBasePresenter {
+    interface Presenter extends BasePresenter {
 
         void setActivityView(ActivityView activityView);
 
-        void setAdapterModel(MainAdapterContract.Model adapterModel);
+        void setAdapterModel(BaseAdapter.Model adapterModel);
 
-        void setAdapaterView(MainAdapterContract.View adapaterView);
+        void setAdapaterView(BaseAdapter.View adapaterView);
 
         @Override
         void start();

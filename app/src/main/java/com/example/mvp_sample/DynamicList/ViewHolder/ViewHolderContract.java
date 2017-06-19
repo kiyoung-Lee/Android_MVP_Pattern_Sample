@@ -1,4 +1,4 @@
-package com.example.mvp_sample.DynamicList.Adapter.ViewHolder;
+package com.example.mvp_sample.DynamicList.ViewHolder;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

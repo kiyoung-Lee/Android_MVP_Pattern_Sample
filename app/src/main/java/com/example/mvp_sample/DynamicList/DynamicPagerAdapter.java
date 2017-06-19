@@ -1,4 +1,4 @@
-package com.example.mvp_sample.DynamicList.Adapter;
+package com.example.mvp_sample.DynamicList;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

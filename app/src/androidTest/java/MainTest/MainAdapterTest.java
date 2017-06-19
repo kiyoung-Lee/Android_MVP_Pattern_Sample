@@ -3,6 +3,7 @@ package MainTest;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 
+import com.example.mvp_sample.Common.BaseAdapter;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.Main.MainAdapter;
 import com.example.mvp_sample.Main.MainAdapterContract;
@@ -26,8 +27,8 @@ public class MainAdapterTest {
 
     private MainAdapter adapter;
     private Context appContext;
-    private MainAdapterContract.Model adapterModel;
-    private MainAdapterContract.View adapterView;
+    private BaseAdapter.Model adapterModel;
+    private BaseAdapter.View adapterView;
 
     @Before
     public void setUp(){
@@ -108,33 +109,6 @@ public class MainAdapterTest {
             adapter = new MainAdapter(appContext);
             adapterModel = adapter;
             adapterModel.replaceData(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "AlramList Is Null");
-        }catch (Exception e){
-            fail();
-        }
-    }
-
-    @Test
-    public void dataClear_Test(){
-        try {
-            List<MainData> emptyList = new ArrayList<>();
-            adapter = new MainAdapter(appContext);
-            adapterModel = adapter;
-            adapterModel.replaceData(emptyList);
-            adapterModel.dataClear();
-        }catch (Exception e){
-            fail();
-        }
-    }
-
-    @Test
-    public void dataClear_Null_Test(){
-        try {
-            //new Object Assign for null AlramList
-            adapter = new MainAdapter(appContext);
-            adapterModel = adapter;
-            adapterModel.dataClear();
         }catch (NullPointerException e){
             assertEquals(e.getMessage(), "AlramList Is Null");
         }catch (Exception e){

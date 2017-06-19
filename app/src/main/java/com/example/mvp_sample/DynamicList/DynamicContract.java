@@ -1,7 +1,7 @@
 package com.example.mvp_sample.DynamicList;
 
-import com.example.mvp_sample.IBasePresenter;
-import com.example.mvp_sample.IBaseView;
+import com.example.mvp_sample.Common.BasePresenter;
+import com.example.mvp_sample.Common.BaseView;
 
 /**
  * Created by KiyoungLee on 2017-06-10.
@@ -9,11 +9,11 @@ import com.example.mvp_sample.IBaseView;
 
 public interface DynamicContract {
 
-    interface ActivityView extends IBaseView<Presenter>{
+    interface ActivityView extends BaseView<Presenter> {
 
     }
 
-    interface Presenter extends IBasePresenter{
+    interface Presenter extends BasePresenter {
 
     }
 }

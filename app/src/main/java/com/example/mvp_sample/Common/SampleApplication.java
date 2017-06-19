@@ -6,7 +6,7 @@ import android.app.Application;
  * Created by KiyoungLee on 2017-06-17.
  */
 
-public class Application extends android.app.Application {
+public class SampleApplication extends Application {
 
     @Override
     public void onCreate() {

@@ -1,9 +1,6 @@
 package com.example.mvp_sample.Main;
 
-import com.example.mvp_sample.IBaseView;
-import com.example.mvp_sample.Main.Data.MainData;
-
-import java.util.List;
+import com.example.mvp_sample.Common.BaseView;
 
 /**
  * Created by kiyoung Lee on 2017-05-27.
@@ -17,7 +14,7 @@ public interface MainAdapterContract {
         void replaceData(T data);
     }
 
-    interface View extends IBaseView<MainContract.Presenter> {
+    interface View extends BaseView<MainContract.Presenter> {
         void notifyAdapter();
     }
 }
