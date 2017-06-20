@@ -1,6 +1,6 @@
 package com.example.mvp_sample.Main;
 
-import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseView;
 
@@ -19,9 +19,9 @@ public interface MainContract {
 
         void setActivityView(ActivityView activityView);
 
-        void setAdapterModel(BaseAdapter.Model adapterModel);
+        void setAdapterModel(BaseAdapterContract.Model adapterModel);
 
-        void setAdapaterView(BaseAdapter.View adapaterView);
+        void setAdapaterView(BaseAdapterContract.View adapaterView);
 
         @Override
         void start();

@@ -1,6 +1,6 @@
 package com.example.mvp_sample.Main;
 
-import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.Main.Data.MainRepository;
 
@@ -16,8 +16,8 @@ public class MainPresenterImpl implements MainContract.Presenter {
 
     private MainRepository repository;
     private MainContract.ActivityView activityView;
-    private BaseAdapter.Model adapterModel;
-    private BaseAdapter.View adapterView;
+    private BaseAdapterContract.Model adapterModel;
+    private BaseAdapterContract.View adapterView;
 
     //Unit Test : Constructor_Test(), Constructor_Null_Test()
     public MainPresenterImpl(MainRepository repository) {
@@ -34,14 +34,14 @@ public class MainPresenterImpl implements MainContract.Presenter {
 
     @Override
     //Unit Test: void setAdapterModel_Test(), setAdapterModel_Null_Test()
-    public void setAdapterModel(BaseAdapter.Model adapterModel) {
+    public void setAdapterModel(BaseAdapterContract.Model adapterModel) {
         checkNotNull(adapterModel, "AdapterModel Is Null");
         this.adapterModel = adapterModel;
     }
 
     @Override
     //Unit Test: setAdapterView_Test(), setAdapterView_Null_Test()
-    public void setAdapaterView(BaseAdapter.View adapaterView) {
+    public void setAdapaterView(BaseAdapterContract.View adapaterView) {
         checkNotNull(adapaterView, "AdapterView Is Null");
         this.adapterView = adapaterView;
     }

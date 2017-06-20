@@ -5,11 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
+import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.R;
 
@@ -24,8 +24,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Created by kiyoung Lee on 2017-05-27.
  */
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainListViewHolder>
-                            implements BaseAdapter.Model<List<MainData>>, BaseAdapter.View{
+public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
+                            implements BaseAdapterContract.Model<List<MainData>>, BaseAdapterContract.View{
 
     private Context context;
     private MainContract.Presenter presenter;
@@ -66,32 +66,35 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainListViewHo
     }
 
     @Override
-    public MainListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_list_holder, parent, false);
-        return new MainListViewHolder(v);
+        BaseRecyclerViewHolder holder = new MainListViewHolder(context, v);
+        holder.setPresenter(presenter);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(MainListViewHolder holder, int position) {
-        checkNotNull(alramList, "AlramList Is Null");
-        if(alramList.size() > 0){
-            MainData alramData = alramList.get(position);
-            holder.txtComment.setText(alramData.getMsg());
-            holder.txtTime.setText(alramData.getDate());
-        }
+    public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
+        holder.bind(alramList.get(position));
     }
 
-    public class MainListViewHolder extends RecyclerView.ViewHolder{
+    public class MainListViewHolder extends BaseRecyclerViewHolder<MainData, MainContract.Presenter>{
 
         TextView txtComment;
         TextView txtTime;
         CircleImageView imgProfile;
 
-        public MainListViewHolder(View itemView) {
-            super(itemView);
+        public MainListViewHolder(Context context, View itemView) {
+            super(context, itemView);
             this.txtComment = ButterKnife.findById(itemView, R.id.txt_content);
             this.txtTime = ButterKnife.findById(itemView, R.id.txt_newsDate);
             this.imgProfile = ButterKnife.findById(itemView, R.id.img_userprofile);
+        }
+
+        @Override
+        public void bind(MainData alramData) {
+            txtComment.setText(alramData.getMsg());
+            txtTime.setText(alramData.getDate());
         }
     }
 }

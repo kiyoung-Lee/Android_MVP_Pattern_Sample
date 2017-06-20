@@ -8,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
+import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
 import com.example.mvp_sample.DynamicList.ViewHolder.DynamicViewHolderFactory;
-import com.example.mvp_sample.DynamicList.ViewHolder.ViewHolderContract;
 import com.example.mvp_sample.DynamicList.Data.Message;
-import com.example.mvp_sample.DynamicList.DynamicContract;
 
 import java.util.List;
 
@@ -21,8 +20,8 @@ import java.util.List;
  * Created by KiyoungLee on 2017-06-10.
  */
 
-public class DynamicListAdapter extends RecyclerView.Adapter<ViewHolderContract>
-                                implements BaseAdapter.Model<List<Message>>, BaseAdapter.View{
+public class DynamicListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
+                                implements BaseAdapterContract.Model<List<Message>>, BaseAdapterContract.View{
 
     private Context context;
     private DynamicContract.Presenter presenter;
@@ -65,16 +64,16 @@ public class DynamicListAdapter extends RecyclerView.Adapter<ViewHolderContract>
     }
 
     @Override
-    public ViewHolderContract onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int resId = DynamicViewHolderFactory.getViewLayoutId(viewType);
         View v = LayoutInflater.from(context).inflate(resId, parent);
-        ViewHolderContract holder = DynamicViewHolderFactory.getViewHolder(viewType, context, v);
+        BaseRecyclerViewHolder holder = DynamicViewHolderFactory.getViewHolder(viewType, context, v);
         holder.setPresenter(presenter);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderContract holder, int position) {
+    public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
         holder.bind(messageList.get(position));
     }
 }

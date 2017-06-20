@@ -3,10 +3,9 @@ package MainTest;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 
-import com.example.mvp_sample.Common.BaseAdapter;
+import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.Main.MainAdapter;
-import com.example.mvp_sample.Main.MainAdapterContract;
 import com.example.mvp_sample.Main.MainContract;
 
 import org.junit.Before;
@@ -27,8 +26,8 @@ public class MainAdapterTest {
 
     private MainAdapter adapter;
     private Context appContext;
-    private BaseAdapter.Model adapterModel;
-    private BaseAdapter.View adapterView;
+    private BaseAdapterContract.Model adapterModel;
+    private BaseAdapterContract.View adapterView;
 
     @Before
     public void setUp(){

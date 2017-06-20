@@ -3,6 +3,7 @@ package com.example.mvp_sample.DynamicList.ViewHolder;
 import android.content.Context;
 import android.view.View;
 
+import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
 import com.example.mvp_sample.R;
 
 /**
@@ -26,8 +27,8 @@ public class DynamicViewHolderFactory {
         return resId;
     }
 
-    public static ViewHolderContract getViewHolder(int viewType, Context context, View itemView){
-        ViewHolderContract holder = null;
+    public static BaseRecyclerViewHolder getViewHolder(int viewType, Context context, View itemView){
+        BaseRecyclerViewHolder holder = null;
 
         if(viewType == LEFT_VIEW_TYPE){
             holder = new LeftViewHolder(context,itemView);
