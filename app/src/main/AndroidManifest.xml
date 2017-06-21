@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".DynamicList.DynamicActivity"></activity>
+        <activity android:name=".Join.JoinActivity"></activity>
+        <activity android:name=".Login.LoginActivity"></activity>
+
     </application>
+
 
 </manifest>

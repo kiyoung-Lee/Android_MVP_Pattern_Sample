@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.mvp_sample.Main.Data.MainRepositoryImp;
 import com.example.mvp_sample.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.Acti
     @BindView(R.id.main_list)
     RecyclerView mainList;
 
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
     private MainContract.Presenter presenter;
     private MainAdapter adapter;
 
@@ -40,5 +44,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.Acti
     @Override
     public void setPresenter(MainContract.Presenter presenter) {
 
+    }
+
+    private void initFireBase(){
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("message");
     }
 }
