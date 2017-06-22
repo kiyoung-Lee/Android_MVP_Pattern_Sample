@@ -67,6 +67,36 @@ public class MainAdapterTest {
     }
 
     @Test
+    public void getItemCount_Test() {
+        try {
+            // given
+            List<MainData> dataList = new ArrayList<>();
+            dataList.add(mock(MainData.class));
+            dataList.add(mock(MainData.class));
+            adapter = new MainAdapter(appContext);
+            adapterModel = adapter;
+
+            //when
+            adapterModel.replaceData(dataList);
+
+            //then
+            assertEquals(adapter.getItemCount(), 2);
+        }catch (Exception e){
+            fail();
+        }
+    }
+
+    @Test
+    public void getItemCount_ItemList_Null_Test() {
+        try {
+            adapter = new MainAdapter(appContext);
+            assertEquals(adapter.getItemCount(), 0);
+        }catch (Exception e){
+            fail();
+        }
+    }
+
+    @Test
     public void setPresenter_Null_Test(){
         try {
             adapter = new MainAdapter(appContext);
