@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
+import com.example.mvp_sample.Main.Data.ChatData;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.R;
 
@@ -25,11 +26,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
-                            implements BaseAdapterContract.Model<List<MainData>>, BaseAdapterContract.View{
+                            implements BaseAdapterContract.Model<List<ChatData>>, BaseAdapterContract.View{
 
     private Context context;
     private MainContract.Presenter presenter;
-    private List<MainData> alramList;
+    private List<ChatData> chatList;
 
     //UI Test: constructor_Null_Test()
     public MainAdapter(Context context) {
@@ -39,8 +40,8 @@ public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public int getItemCount() {
-        if(alramList != null)
-            return alramList.size();
+        if(chatList != null)
+            return chatList.size();
         else
             return 0;
     }
@@ -54,9 +55,9 @@ public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     //UI Test : replaceData_Test(), replaceData_Null_Test()
-    public void replaceData(List<MainData> alramList) {
-        checkNotNull(alramList, "AlramList Is Null");
-        this.alramList = alramList;
+    public void replaceData(List<ChatData> chatList) {
+        checkNotNull(chatList, "ChatList Is Null");
+        this.chatList = chatList;
     }
 
     @Override
@@ -75,10 +76,10 @@ public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public void onBindViewHolder(BaseRecyclerViewHolder holder, int position) {
-        holder.bind(alramList.get(position));
+        holder.bind(chatList.get(position));
     }
 
-    public class MainListViewHolder extends BaseRecyclerViewHolder<MainData, MainContract.Presenter>{
+    public class MainListViewHolder extends BaseRecyclerViewHolder<ChatData, MainContract.Presenter>{
 
         TextView txtComment;
         TextView txtTime;
@@ -92,9 +93,9 @@ public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
         }
 
         @Override
-        public void bind(MainData alramData) {
-            txtComment.setText(alramData.getMsg());
-            txtTime.setText(alramData.getDate());
+        public void bind(ChatData alramData) {
+            txtComment.setText(alramData.getMessage());
+            txtTime.setText(alramData.getUserName());
         }
     }
 }

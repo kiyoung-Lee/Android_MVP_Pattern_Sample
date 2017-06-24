@@ -12,6 +12,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class MainRepositoryImp implements MainRepository {
 
     private List<MainData> mainDataList;
+    private List<ChatData> chatList;
 
     public MainRepositoryImp() {
     }
@@ -34,5 +35,15 @@ public class MainRepositoryImp implements MainRepository {
         mainDataList.add(addItem5);
 
         callBack.onListLoaded(mainDataList);
+    }
+
+    @Override
+    public void addChatData(ChatData addItem, ChatListLoadCallBack callBack) {
+        checkNotNull(callBack, "CallBack Is Null");
+        if(chatList == null)
+            chatList = new ArrayList<>();
+
+        chatList.add(addItem);
+        callBack.onChatListLoaded(chatList);
     }
 }

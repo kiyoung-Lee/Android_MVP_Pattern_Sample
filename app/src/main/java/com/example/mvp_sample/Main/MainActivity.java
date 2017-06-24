@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.mvp_sample.Main.Data.MainRepositoryImp;
 import com.example.mvp_sample.R;
@@ -12,14 +14,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainContract.ActivityView {
 
     @BindView(R.id.main_list)
     RecyclerView mainList;
+    @BindView(R.id.edit_chat)
+    EditText editText;
 
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+
     private MainContract.Presenter presenter;
     private MainAdapter adapter;
 
@@ -46,8 +50,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.Acti
 
     }
 
-    private void initFireBase(){
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("message");
+    @OnClick(R.id.txt_send)
+    public void sendMessage(){
+        presenter.sendMessage(editText.getText().toString());
+        editText.setText("");
     }
 }

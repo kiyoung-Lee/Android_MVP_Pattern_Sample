@@ -1,8 +1,14 @@
 package com.example.mvp_sample.Main;
 
 import com.example.mvp_sample.Common.BaseAdapterContract;
+import com.example.mvp_sample.Main.Data.ChatData;
 import com.example.mvp_sample.Main.Data.MainData;
 import com.example.mvp_sample.Main.Data.MainRepository;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -18,6 +24,9 @@ public class MainPresenterImpl implements MainContract.Presenter {
     private MainContract.ActivityView activityView;
     private BaseAdapterContract.Model adapterModel;
     private BaseAdapterContract.View adapterView;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     //Unit Test : Constructor_Test(), Constructor_Null_Test()
     public MainPresenterImpl(MainRepository repository) {
@@ -48,19 +57,70 @@ public class MainPresenterImpl implements MainContract.Presenter {
 
     @Override
     public void start() {
-        repository.getDataList(new MainRepository.LoadListCallBack() {
+        initFireBase();
+
+//        repository.getDataList(new MainRepository.LoadListCallBack() {
+//            @Override
+//            public void onListLoaded(List<MainData> dataList) {
+//                checkNotNull(adapterModel, "AdapterModel Is Null");
+//                checkNotNull(adapterView, "AdapterView Is Null");
+//                adapterModel.replaceData(dataList);
+//                adapterView.notifyAdapter();
+//            }
+//
+//            @Override
+//            public void onDataNotAvailable() {
+//
+//            }
+//        });
+    }
+
+    private void initFireBase(){
+        //FireBase Init
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("message");
+        databaseReference.child("message").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onListLoaded(List<MainData> dataList) {
-                checkNotNull(adapterModel, "AdapterModel Is Null");
-                checkNotNull(adapterView, "AdapterView Is Null");
-                adapterModel.replaceData(dataList);
-                adapterView.notifyAdapter();
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ChatData addItem = dataSnapshot.getValue(ChatData.class);
+                repository.addChatData(addItem, new MainRepository.ChatListLoadCallBack() {
+                    @Override
+                    public void onChatListLoaded(List<ChatData> chatList) {
+                        checkNotNull(chatList, "ChatList Is Null");
+                        checkNotNull(adapterModel, "AdapterModel Is Null");
+                        checkNotNull(adapterView, "AdapterView Is Null");
+
+                        adapterModel.replaceData(chatList);
+                        adapterView.notifyAdapter();
+                    }
+                });
             }
 
             @Override
-            public void onDataNotAvailable() {
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+    }
+
+    @Override
+    public void sendMessage(String msg) {
+        ChatData chatData = new ChatData("Michal", msg);
+        databaseReference.child("message").push().setValue(chatData);
     }
 }

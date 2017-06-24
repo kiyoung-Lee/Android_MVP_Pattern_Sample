@@ -25,5 +25,7 @@ public interface MainContract {
 
         @Override
         void start();
+
+        void sendMessage(String msg);
     }
 }
