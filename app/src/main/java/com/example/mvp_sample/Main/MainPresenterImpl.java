@@ -121,6 +121,6 @@ public class MainPresenterImpl implements MainContract.Presenter {
     @Override
     public void sendMessage(String msg) {
         ChatData chatData = new ChatData("Michal", msg);
-        databaseReference.child("message").push().setValue(chatData);
+        databaseReference.child("hello").push().setValue(chatData);
     }
 }
