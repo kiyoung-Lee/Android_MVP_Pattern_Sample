@@ -140,6 +140,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
                         if (!task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+
+                            Log.d("TAG", "onComplete: Failed=" + task.getException().getMessage());
                         }
                     }
                 });
