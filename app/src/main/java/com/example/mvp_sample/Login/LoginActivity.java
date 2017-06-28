@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.mvp_sample.Login.Data.LoginRepositoryImpl;
+import com.example.mvp_sample.Main.MainActivity;
 import com.example.mvp_sample.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -72,22 +73,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
             }
         });
 
-//        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-//            @Override
-//            public void onSuccess(LoginResult loginResult) {
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//
-//            }
-//
-//            @Override
-//            public void onError(FacebookException error) {
-//
-//            }
-//        });
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -134,16 +119,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
                             Log.d("TAG", "onComplete: Failed=" + task.getException().getMessage());
+                            LoginManager.getInstance().logOut();
+                        }else{
+                            InitApp();
                         }
                     }
                 });
+    }
+
+    private void InitApp(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
