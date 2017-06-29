@@ -2,4 +2,5 @@
     <string name="app_name">MVP_Sample</string>
     <string name="facebook_app_id">527820120902786</string>
     <string name="fb_login_protocol_scheme">fb527820120902786</string>
+    <string name="msg_exit">뒤로 버튼을 한번 더 누르시면 종료됩니다.</string>
 </resources>

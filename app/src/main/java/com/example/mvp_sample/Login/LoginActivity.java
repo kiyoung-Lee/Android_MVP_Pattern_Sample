@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    InitApp();
                 } else {
                     // User is signed out
                 }
