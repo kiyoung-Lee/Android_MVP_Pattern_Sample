@@ -15,6 +15,8 @@ public class SampleApplication extends Application {
         super.onCreate();
     }
 
+
+
     @Override
     public void onTerminate() {
         super.onTerminate();
