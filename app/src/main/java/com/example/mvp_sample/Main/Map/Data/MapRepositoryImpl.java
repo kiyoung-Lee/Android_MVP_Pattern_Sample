@@ -1,4 +1,4 @@
-package com.example.mvp_sample.Map.Data;
+package com.example.mvp_sample.Main.Map.Data;
 
 /**
  * Created by KiyoungLee on 2017-07-08.

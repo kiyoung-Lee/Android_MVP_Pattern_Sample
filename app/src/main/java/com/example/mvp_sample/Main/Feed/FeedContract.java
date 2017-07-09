@@ -1,4 +1,4 @@
-package com.example.mvp_sample.Feed;
+package com.example.mvp_sample.Main.Feed;
 
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseView;
@@ -9,12 +9,12 @@ import com.example.mvp_sample.Common.BaseView;
 
 public interface FeedContract {
 
-    interface ActivityView extends BaseView<Presenter> {
+    interface FragmentView extends BaseView<Presenter> {
 
     }
 
     interface Presenter extends BasePresenter {
 
-        void setActivityView(FeedContract.ActivityView activityView);
+        void setFragmentView(FragmentView fragmentView);
     }
 }
