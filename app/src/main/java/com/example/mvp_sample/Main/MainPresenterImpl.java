@@ -43,16 +43,16 @@ public class MainPresenterImpl implements MainContract.Presenter {
 
     @Override
     //Unit Test: void setAdapterModel_Test(), setAdapterModel_Null_Test()
-    public void setAdapterModel(BaseAdapterContract.Model adapterModel) {
-        checkNotNull(adapterModel, "AdapterModel Is Null");
-        this.adapterModel = adapterModel;
+    public void setChatAdapterModel(BaseAdapterContract.Model chatAdapterModel) {
+        checkNotNull(chatAdapterModel, "AdapterModel Is Null");
+        this.adapterModel = chatAdapterModel;
     }
 
     @Override
     //Unit Test: setAdapterView_Test(), setAdapterView_Null_Test()
-    public void setAdapaterView(BaseAdapterContract.View adapaterView) {
-        checkNotNull(adapaterView, "AdapterView Is Null");
-        this.adapterView = adapaterView;
+    public void setChatAdapaterView(BaseAdapterContract.View chatAdapaterView) {
+        checkNotNull(chatAdapaterView, "AdapterView Is Null");
+        this.adapterView = chatAdapaterView;
     }
 
     @Override

@@ -70,7 +70,7 @@ public class MainPresenterTest {
             MainRepository dataSource = mock(MainRepositoryImp.class);
             MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             BaseAdapterContract.Model adapterModel = mock(BaseAdapterContract.Model.class);
-            presenter.setAdapterModel(adapterModel);
+            presenter.setChatAdapterModel(adapterModel);
         }catch (Exception e){
             fail();
         }
@@ -81,7 +81,7 @@ public class MainPresenterTest {
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
             MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
-            presenter.setAdapterModel(null);
+            presenter.setChatAdapterModel(null);
         }catch (NullPointerException e){
             assertEquals(e.getMessage(), "AdapterModel Is Null");
         }catch (Exception e){
@@ -95,7 +95,7 @@ public class MainPresenterTest {
             MainRepository dataSource = mock(MainRepositoryImp.class);
             MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
             BaseAdapterContract.View adapterView = mock(BaseAdapterContract.View.class);
-            presenter.setAdapaterView(adapterView);
+            presenter.setChatAdapaterView(adapterView);
         }catch (Exception e){
             fail();
         }
@@ -106,7 +106,7 @@ public class MainPresenterTest {
         try {
             MainRepository dataSource = mock(MainRepositoryImp.class);
             MainContract.Presenter presenter = new MainPresenterImpl(dataSource);
-            presenter.setAdapaterView(null);
+            presenter.setChatAdapaterView(null);
         }catch (NullPointerException e){
             assertEquals(e.getMessage(), "AdapterView Is Null");
         }catch (Exception e){

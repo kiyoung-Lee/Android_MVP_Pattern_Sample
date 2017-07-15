@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.example.mvp_sample.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by KiyoungLee on 2017-07-08.
  */
@@ -20,7 +22,9 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.map_frag, container, false);
+        ButterKnife.bind(getActivity());
+        return view;
     }
 
     @Override

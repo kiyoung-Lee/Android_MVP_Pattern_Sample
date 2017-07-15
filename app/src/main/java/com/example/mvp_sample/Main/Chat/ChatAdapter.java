@@ -1,4 +1,4 @@
-package com.example.mvp_sample.Main;
+package com.example.mvp_sample.Main.Chat;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +11,7 @@ import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
 import com.example.mvp_sample.Main.Data.ChatData;
-import com.example.mvp_sample.Main.Data.MainData;
+import com.example.mvp_sample.Main.MainContract;
 import com.example.mvp_sample.R;
 
 import java.util.List;
@@ -25,7 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Created by kiyoung Lee on 2017-05-27.
  */
 
-public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
+public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
                             implements BaseAdapterContract.Model<List<ChatData>>, BaseAdapterContract.View{
 
     private Context context;
@@ -33,7 +33,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
     private List<ChatData> chatList;
 
     //UI Test: constructor_Null_Test()
-    public MainAdapter(Context context) {
+    public ChatAdapter(Context context) {
         checkNotNull(context, "Context Is Null");
         this.context = context;
     }
@@ -68,7 +68,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_list_holder, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_holder, parent, false);
         BaseRecyclerViewHolder holder = new MainListViewHolder(context, v);
         holder.setPresenter(presenter);
         return holder;

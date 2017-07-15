@@ -5,7 +5,7 @@ import android.support.test.InstrumentationRegistry;
 
 import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Main.Data.MainData;
-import com.example.mvp_sample.Main.MainAdapter;
+import com.example.mvp_sample.Main.Chat.ChatAdapter;
 import com.example.mvp_sample.Main.MainContract;
 
 import org.junit.Before;
@@ -22,9 +22,9 @@ import static org.mockito.Mockito.mock;
  * Created by kiyoung Lee on 2017-05-28.
  */
 
-public class MainAdapterTest {
+public class ChatAdapterTest {
 
-    private MainAdapter adapter;
+    private ChatAdapter adapter;
     private Context appContext;
     private BaseAdapterContract.Model adapterModel;
     private BaseAdapterContract.View adapterView;
@@ -37,7 +37,7 @@ public class MainAdapterTest {
     @Test
     public void constructor_Test(){
         try{
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
         }catch (Exception e){
             fail();
         }
@@ -46,7 +46,7 @@ public class MainAdapterTest {
     @Test
     public void constructor_Null_Test(){
         try{
-            MainAdapter adapter = new MainAdapter(null);
+            ChatAdapter adapter = new ChatAdapter(null);
         }catch (NullPointerException ex){
             assertEquals(ex.getMessage(), "Context Is Null");
         }catch (Exception ex){
@@ -58,7 +58,7 @@ public class MainAdapterTest {
     public void setPresenter_Test(){
         try {
             MainContract.Presenter presenter = mock(MainContract.Presenter.class);
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             adapterView = adapter;
             adapterView.setPresenter(presenter);
         }catch (Exception e){
@@ -73,7 +73,7 @@ public class MainAdapterTest {
             List<MainData> dataList = new ArrayList<>();
             dataList.add(mock(MainData.class));
             dataList.add(mock(MainData.class));
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             adapterModel = adapter;
 
             //when
@@ -89,7 +89,7 @@ public class MainAdapterTest {
     @Test
     public void getItemCount_ItemList_Null_Test() {
         try {
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             assertEquals(adapter.getItemCount(), 0);
         }catch (Exception e){
             fail();
@@ -99,7 +99,7 @@ public class MainAdapterTest {
     @Test
     public void setPresenter_Null_Test(){
         try {
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             adapterView = adapter;
             adapterView.setPresenter(null);
         }catch (NullPointerException e){
@@ -112,7 +112,7 @@ public class MainAdapterTest {
     @Test
     public void notifyAdapter_Test(){
         try {
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             adapterView = adapter;
             adapterView.notifyAdapter();
         }catch (Exception e){
@@ -124,7 +124,7 @@ public class MainAdapterTest {
     public void replaceData_Test(){
         try {
             List<MainData> emptyList = new ArrayList<>();
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             adapterModel = adapter;
             adapterModel.replaceData(emptyList);
         }catch (Exception e){
@@ -135,7 +135,7 @@ public class MainAdapterTest {
     @Test
     public void replaceData_Null_Test(){
         try {
-            adapter = new MainAdapter(appContext);
+            adapter = new ChatAdapter(appContext);
             adapterModel = adapter;
             adapterModel.replaceData(null);
         }catch (NullPointerException e){

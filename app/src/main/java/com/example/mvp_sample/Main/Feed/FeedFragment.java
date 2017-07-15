@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import com.example.mvp_sample.Main.Feed.Data.FeedRepositoryImpl;
 import com.example.mvp_sample.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by KiyoungLee on 2017-06-21.
  */
@@ -23,10 +25,14 @@ public class FeedFragment extends Fragment implements FeedContract.FragmentView 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.feed_frag, container, false);
+        ButterKnife.bind(getActivity());
+
+
         presenter = new FeedPresenterImpl(new FeedRepositoryImpl());
         presenter.setFragmentView(this);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override

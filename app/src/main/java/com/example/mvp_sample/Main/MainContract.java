@@ -19,9 +19,9 @@ public interface MainContract {
 
         void setActivityView(ActivityView activityView);
 
-        void setAdapterModel(BaseAdapterContract.Model adapterModel);
+        void setChatAdapterModel(BaseAdapterContract.Model chatAdapterModel);
 
-        void setAdapaterView(BaseAdapterContract.View adapaterView);
+        void setChatAdapaterView(BaseAdapterContract.View chatAdapaterView);
 
         @Override
         void start();

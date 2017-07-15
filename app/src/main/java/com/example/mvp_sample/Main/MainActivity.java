@@ -3,22 +3,17 @@ package com.example.mvp_sample.Main;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.mvp_sample.Common.BackPressClose;
+import com.example.mvp_sample.Main.Chat.ChatAdapter;
 import com.example.mvp_sample.Main.Data.MainRepositoryImp;
 import com.example.mvp_sample.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,11 +30,13 @@ public class MainActivity extends AppCompatActivity
     TabLayout mainTab;
     @BindView(R.id.main_toolbar)
     Toolbar toolbar;
-
+    @BindView(R.id.main_viewpager)
+    ViewPager mainPager;
 
 
     private MainContract.Presenter presenter;
-    private MainAdapter adapter;
+    private MainPagerAdapter mainPagerAdapter;
+    private ChatAdapter adapter;
     private BackPressClose backPressCloseHandler;
 
     @Override
@@ -57,14 +54,15 @@ public class MainActivity extends AppCompatActivity
         mainTab.addTab(mainTab.newTab().setText("MY"));
         mainTab.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        adapter = new MainAdapter(getApplicationContext());
+        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
+        adapter = new ChatAdapter(getApplicationContext());
 //        mainList.setLayoutManager(new LinearLayoutManager(this));
 //        mainList.setAdapter(adapter);
 
         presenter = new MainPresenterImpl(new MainRepositoryImp());
         presenter.setActivityView(this);
-        presenter.setAdapterModel(adapter);
-        presenter.setAdapaterView(adapter);
+        presenter.setChatAdapterModel(adapter);
+        presenter.setChatAdapaterView(adapter);
         adapter.setPresenter(presenter);
         presenter.start();
     }
