@@ -19,13 +19,7 @@ public interface MainContract {
 
         void setActivityView(ActivityView activityView);
 
-        void setChatAdapterModel(BaseAdapterContract.Model chatAdapterModel);
-
-        void setChatAdapaterView(BaseAdapterContract.View chatAdapaterView);
-
         @Override
         void start();
-
-        void sendMessage(String msg);
     }
 }

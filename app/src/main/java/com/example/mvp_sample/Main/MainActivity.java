@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,21 +23,18 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContract.ActivityView {
 
-//    @BindView(R.id.main_list)
-//    RecyclerView mainList;
-//    @BindView(R.id.edit_chat)
-//    EditText editText;
     @BindView(R.id.main_tab)
     TabLayout mainTab;
     @BindView(R.id.main_toolbar)
     Toolbar toolbar;
     @BindView(R.id.main_viewpager)
     ViewPager mainPager;
+    @BindView(R.id.main_nestedscrollview)
+    NestedScrollView nestedScrollView;
 
 
     private MainContract.Presenter presenter;
     private MainPagerAdapter mainPagerAdapter;
-    private ChatAdapter adapter;
     private BackPressClose backPressCloseHandler;
 
     @Override
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
         backPressCloseHandler = new BackPressClose(this);
         setSupportActionBar(toolbar);
+        nestedScrollView.setFillViewport(true);
 
         mainTab.addTab(mainTab.newTab().setText("채팅"));
         mainTab.addTab(mainTab.newTab().setText("피드"));
@@ -55,15 +54,11 @@ public class MainActivity extends AppCompatActivity
         mainTab.setTabGravity(TabLayout.GRAVITY_FILL);
 
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
-        adapter = new ChatAdapter(getApplicationContext());
-//        mainList.setLayoutManager(new LinearLayoutManager(this));
-//        mainList.setAdapter(adapter);
+        mainPager.setAdapter(mainPagerAdapter);
+        mainPager.setCurrentItem(0);
 
         presenter = new MainPresenterImpl(new MainRepositoryImp());
         presenter.setActivityView(this);
-        presenter.setChatAdapterModel(adapter);
-        presenter.setChatAdapaterView(adapter);
-        adapter.setPresenter(presenter);
         presenter.start();
     }
 
@@ -76,12 +71,6 @@ public class MainActivity extends AppCompatActivity
     public void setPresenter(MainContract.Presenter presenter) {
 
     }
-
-//    @OnClick(R.id.txt_send)
-//    public void sendMessage(){
-//        presenter.sendMessage(editText.getText().toString());
-//        editText.setText("");
-//    }
 
     @Override
     public void onBackPressed() {

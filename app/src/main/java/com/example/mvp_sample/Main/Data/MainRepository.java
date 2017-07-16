@@ -1,5 +1,7 @@
 package com.example.mvp_sample.Main.Data;
 
+import com.example.mvp_sample.Main.Chat.Data.ChatData;
+
 import java.util.List;
 
 /**
@@ -14,11 +16,5 @@ public interface MainRepository {
         void onDataNotAvailable();
     }
 
-    interface ChatListLoadCallBack{
-        void onChatListLoaded(List<ChatData> chatList);
-    }
-
     void getDataList(LoadListCallBack callBack);
-
-    void addChatData(ChatData addItem, ChatListLoadCallBack callBack);
 }

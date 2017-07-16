@@ -1,4 +1,4 @@
-package com.example.mvp_sample.Main.Data;
+package com.example.mvp_sample.Main.Chat.Data;
 
 /**
  * Created by KiyoungLee on 2017-06-24.

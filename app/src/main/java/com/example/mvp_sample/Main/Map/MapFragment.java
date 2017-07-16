@@ -18,6 +18,10 @@ import butterknife.ButterKnife;
 
 public class MapFragment extends Fragment implements MapContract.FragmentView {
 
+
+    public MapFragment() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,

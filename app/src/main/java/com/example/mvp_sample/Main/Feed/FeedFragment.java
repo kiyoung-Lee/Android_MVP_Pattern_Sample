@@ -20,6 +20,9 @@ public class FeedFragment extends Fragment implements FeedContract.FragmentView 
 
     private FeedContract.Presenter presenter;
 
+    public FeedFragment() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,

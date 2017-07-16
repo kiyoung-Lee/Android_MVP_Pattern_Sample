@@ -10,8 +10,7 @@ import android.widget.TextView;
 import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
-import com.example.mvp_sample.Main.Data.ChatData;
-import com.example.mvp_sample.Main.MainContract;
+import com.example.mvp_sample.Main.Chat.Data.ChatData;
 import com.example.mvp_sample.R;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
                             implements BaseAdapterContract.Model<List<ChatData>>, BaseAdapterContract.View{
 
     private Context context;
-    private MainContract.Presenter presenter;
+    private ChatContract.Presenter presenter;
     private List<ChatData> chatList;
 
     //UI Test: constructor_Null_Test()
@@ -50,7 +49,7 @@ public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
     //UI Test: setPresenter_Test(), setPresenter_Null_Test()
     public void setPresenter(BasePresenter presenter) {
         checkNotNull(presenter, "Presenter Is Null");
-        this.presenter = (MainContract.Presenter) presenter;
+        this.presenter = (ChatContract.Presenter) presenter;
     }
 
     @Override
@@ -69,7 +68,7 @@ public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_holder, parent, false);
-        BaseRecyclerViewHolder holder = new MainListViewHolder(context, v);
+        BaseRecyclerViewHolder holder = new ChatViewHolder(context, v);
         holder.setPresenter(presenter);
         return holder;
     }
@@ -79,13 +78,13 @@ public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
         holder.bind(chatList.get(position));
     }
 
-    public class MainListViewHolder extends BaseRecyclerViewHolder<ChatData, MainContract.Presenter>{
+    public class ChatViewHolder extends BaseRecyclerViewHolder<ChatData, ChatContract.Presenter>{
 
         TextView txtComment;
         TextView txtTime;
         CircleImageView imgProfile;
 
-        public MainListViewHolder(Context context, View itemView) {
+        public ChatViewHolder(Context context, View itemView) {
             super(context, itemView);
             this.txtComment = ButterKnife.findById(itemView, R.id.txt_content);
             this.txtTime = ButterKnife.findById(itemView, R.id.txt_newsDate);
