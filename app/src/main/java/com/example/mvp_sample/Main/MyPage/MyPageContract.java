@@ -14,6 +14,6 @@ public interface MyPageContract {
     }
 
     interface Presenter extends BasePresenter{
-
+        void setFragmentView(MyPageContract.FragmentView fragmentView);
     }
 }

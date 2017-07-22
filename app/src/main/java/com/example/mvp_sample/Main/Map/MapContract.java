@@ -16,5 +16,6 @@ public interface MapContract {
     interface Presenter extends BasePresenter{
         @Override
         void start();
-    }
+
+        void setFragmentView(MapContract.FragmentView fragmentView);    }
 }

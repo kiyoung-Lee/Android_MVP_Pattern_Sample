@@ -13,11 +13,13 @@ public class FeedPresenterImpl implements FeedContract.Presenter {
     private FeedRepositoy repository;
     private FeedContract.FragmentView fragmentView;
 
+    //Unit Test: constructor_Test(), constructor_Null_Test()
     public FeedPresenterImpl(FeedRepositoy repository) {
         checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
 
+    //Unit Test: setFragmentView_Test(), setFragmentView_Null_Test()
     public void setFragmentView(FeedContract.FragmentView fragmentView) {
         checkNotNull(fragmentView, "FragmentView Is Null");
         this.fragmentView = fragmentView;

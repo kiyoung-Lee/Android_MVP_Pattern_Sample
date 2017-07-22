@@ -17,7 +17,7 @@ import java.util.List;
  * Created by KiyoungLee on 2017-07-09.
  */
 
-public class ChatPresenter implements ChatContract.Presenter {
+public class ChatPresenterImpl implements ChatContract.Presenter {
 
     private ChatRepository repository;
     private ChatContract.FragmentView fragmentView;
@@ -27,21 +27,25 @@ public class ChatPresenter implements ChatContract.Presenter {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
-    public ChatPresenter(ChatRepository repository) {
+    //Unit Test: constructor_Test(), constructor_Null_Test()
+    public ChatPresenterImpl(ChatRepository repository) {
         checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
 
+    //Unit Test: setFragmentView_Test(), setFragmentView_Null_Test()
     public void setFragmentView(ChatContract.FragmentView fragmentView) {
         checkNotNull(fragmentView, "FragmentView Is Null");
         this.fragmentView = fragmentView;
     }
 
+    //Unit Test: setAdapterModel_Test(), setAdapterModel_Null_Test()
     public void setChatAdapterModel(BaseAdapterContract.Model<List<ChatData>> chatAdapterModel) {
         checkNotNull(chatAdapterModel, "ChatAdapterModel Is Null");
         this.chatAdapterModel = chatAdapterModel;
     }
 
+    //Unit Test: setAdapterView_Test(), setAdapterView_Null_Test()
     public void setChatAdapterView(BaseAdapterContract.View chatAdapterView) {
         checkNotNull(chatAdapterView, "ChatAdapterView Is Null");
         this.chatAdapterView = chatAdapterView;
@@ -60,17 +64,14 @@ public class ChatPresenter implements ChatContract.Presenter {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 ChatData addItem = dataSnapshot.getValue(ChatData.class);
-                repository.addChatData(addItem, new ChatRepository.ChatListLoadCallBack() {
-                    @Override
-                    public void onChatListLoaded(List<ChatData> chatList) {
-                        checkNotNull(chatList, "ChatList Is Null");
-                        checkNotNull(chatAdapterModel, "AdapterModel Is Null");
-                        checkNotNull(chatAdapterView, "AdapterView Is Null");
+                List<ChatData> chatList = repository.addChatData(addItem);
 
-                        chatAdapterModel.replaceData(chatList);
-                        chatAdapterView.notifyAdapter();
-                    }
-                });
+                checkNotNull(chatList, "ChatListData Is Null");
+                checkNotNull(chatAdapterModel, "AdapterModel Is Null");
+                checkNotNull(chatAdapterView, "AdapterView Is Null");
+
+                chatAdapterModel.replaceData(chatList);
+                chatAdapterView.notifyAdapter();
             }
 
             @Override
@@ -96,8 +97,12 @@ public class ChatPresenter implements ChatContract.Presenter {
     }
 
     @Override
+    //Unit Test: sendMessage_Datareference_Null_Test(), sendMessage_Msg_Null_Test(), sendMessage_Msg_empty_Test()
     public void sendMessage(String msg) {
-        ChatData chatData = new ChatData("Michal", msg);
-        databaseReference.child("hello").push().setValue(chatData);
+        if(msg != null && msg != "") {
+            checkNotNull(databaseReference, "dataReference Is Null");
+            ChatData chatData = new ChatData("Michal", msg);
+            databaseReference.child("hello").push().setValue(chatData);
+        }
     }
 }

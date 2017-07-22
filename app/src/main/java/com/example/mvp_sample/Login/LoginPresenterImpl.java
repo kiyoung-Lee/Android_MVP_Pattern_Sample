@@ -19,7 +19,7 @@ public class LoginPresenterImpl implements LoginContract.Presenter {
     }
 
     public void setActivityView(LoginContract.ActivityView activityView) {
-        checkNotNull(activityView, "FragmentView Is Null");
+        checkNotNull(activityView, "ActivityView Is Null");
         this.activityView = activityView;
     }
 

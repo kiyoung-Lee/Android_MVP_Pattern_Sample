@@ -11,9 +11,5 @@ import java.util.List;
 
 public interface ChatRepository {
 
-    interface ChatListLoadCallBack{
-        void onChatListLoaded(List<ChatData> chatList);
-    }
-
-    void addChatData(ChatData addItem, ChatListLoadCallBack callBack);
+    List<ChatData> addChatData(ChatData addItem);
 }

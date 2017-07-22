@@ -19,12 +19,13 @@ public class ChatRepositoryImpl implements ChatRepository {
     }
 
     @Override
-    public void addChatData(ChatData addItem, ChatListLoadCallBack callBack) {
-        checkNotNull(callBack, "CallBack Is Null");
+    //Unit Test: addChatData_Test(), addChatData_addItem_Null_Test()
+    public List<ChatData> addChatData(ChatData addItem) {
+        checkNotNull(addItem, "AddItem Is Null");
         if(chatList == null)
             chatList = new ArrayList<>();
 
         chatList.add(addItem);
-        callBack.onChatListLoaded(chatList);
+        return chatList;
     }
 }
