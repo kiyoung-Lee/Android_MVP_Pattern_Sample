@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.mvp_sample.Group.Data.GroupRepositoryImpl;
 import com.example.mvp_sample.Main.MainContract;
+import com.example.mvp_sample.R;
 
 /**
  * Created by mapssi on 24/07/2017.
@@ -18,6 +19,8 @@ public class GroupActivity extends AppCompatActivity implements GroupContract.Ac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.group_act);
 
         presenter = new GroupPresenterImpl(new GroupRepositoryImpl());
         presenter.setActivityView(this);
