@@ -14,10 +14,16 @@ public class DynamicPresenterImpl implements DynamicContract.Presenter {
     private DynamicDataRepository repository;
     private DynamicContract.ActivityView activityView;
 
-
+    //Unit Test:  constructor_Test(), constructor_Null_Test()
     public DynamicPresenterImpl(DynamicDataRepository repository) {
         checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
+    }
+
+    //Unit Test: setActivityView_Test(), setActivityView_Null_Test()
+    public void setActivityView(DynamicContract.ActivityView activityView) {
+        checkNotNull(activityView, "ActivityView Is Null");
+        this.activityView = activityView;
     }
 
     @Override

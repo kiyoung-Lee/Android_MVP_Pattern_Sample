@@ -14,6 +14,6 @@ public interface DynamicContract {
     }
 
     interface Presenter extends BasePresenter {
-
+        void setActivityView(DynamicContract.ActivityView activityView);
     }
 }
