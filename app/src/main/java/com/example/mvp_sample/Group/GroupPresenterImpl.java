@@ -1,6 +1,10 @@
 package com.example.mvp_sample.Group;
 
+import com.example.mvp_sample.Common.BaseAdapterContract;
+import com.example.mvp_sample.Group.Data.GroupInfo;
 import com.example.mvp_sample.Group.Data.GroupRepository;
+
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -12,6 +16,8 @@ public class GroupPresenterImpl implements GroupContract.Presenter {
 
     private GroupRepository repository;
     private GroupContract.ActivityView activityView;
+    private BaseAdapterContract.Model<List<GroupInfo>> adapterModel;
+    private BaseAdapterContract.View adapterView;
 
     //Unit Test: constructor_Test(), constructor_Null_Test()
     public GroupPresenterImpl(GroupRepository repository) {
@@ -23,6 +29,16 @@ public class GroupPresenterImpl implements GroupContract.Presenter {
     public void setActivityView(GroupContract.ActivityView activityView) {
         checkNotNull(activityView, "ActivityView Is Null");
         this.activityView = activityView;
+    }
+
+    public void setAdapterModel(BaseAdapterContract.Model<List<GroupInfo>> adapterModel) {
+        checkNotNull(adapterModel, "AdapterModel Is Null");
+        this.adapterModel = adapterModel;
+    }
+
+    public void setAdapterView(BaseAdapterContract.View adapterView) {
+        checkNotNull(adapterView, "AdapterView Is Null");
+        this.adapterView = adapterView;
     }
 
     @Override
