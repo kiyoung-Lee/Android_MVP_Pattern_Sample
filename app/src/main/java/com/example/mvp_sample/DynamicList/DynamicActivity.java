@@ -11,11 +11,10 @@ import com.example.mvp_sample.R;
  * Created by KiyoungLee on 2017-06-10.
  */
 
-public class DynamicActivity extends AppCompatActivity {
+public class DynamicActivity extends AppCompatActivity implements DynamicContract.ActivityView {
 
     DynamicContract.Presenter presenter;
     DynamicPagerAdapter pagerAdapter;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,5 +22,11 @@ public class DynamicActivity extends AppCompatActivity {
         setContentView(R.layout.dynamic_act);
 
         presenter = new DynamicPresenterImpl(new DynamicDataRepositoryImpl());
+        presenter.setActivityView(this);
+    }
+
+    @Override
+    public void setPresenter(DynamicContract.Presenter presenter) {
+
     }
 }
