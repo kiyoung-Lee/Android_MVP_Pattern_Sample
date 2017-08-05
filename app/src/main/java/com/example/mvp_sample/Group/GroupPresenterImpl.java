@@ -1,6 +1,7 @@
 package com.example.mvp_sample.Group;
 
 import com.example.mvp_sample.Common.BaseAdapterContract;
+import com.example.mvp_sample.Group.Data.GroupData;
 import com.example.mvp_sample.Group.Data.GroupInfo;
 import com.example.mvp_sample.Group.Data.GroupRepository;
 
@@ -16,7 +17,7 @@ public class GroupPresenterImpl implements GroupContract.Presenter {
 
     private GroupRepository repository;
     private GroupContract.ActivityView activityView;
-    private BaseAdapterContract.Model<List<GroupInfo>> adapterModel;
+    private BaseAdapterContract.Model<List<GroupData>> adapterModel;
     private BaseAdapterContract.View adapterView;
 
     //Unit Test: constructor_Test(), constructor_Null_Test()
@@ -31,7 +32,7 @@ public class GroupPresenterImpl implements GroupContract.Presenter {
         this.activityView = activityView;
     }
 
-    public void setAdapterModel(BaseAdapterContract.Model<List<GroupInfo>> adapterModel) {
+    public void setAdapterModel(BaseAdapterContract.Model<List<GroupData>> adapterModel) {
         checkNotNull(adapterModel, "AdapterModel Is Null");
         this.adapterModel = adapterModel;
     }

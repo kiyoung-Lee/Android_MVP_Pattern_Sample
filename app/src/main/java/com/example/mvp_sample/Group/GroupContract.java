@@ -3,6 +3,7 @@ package com.example.mvp_sample.Group;
 import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseView;
+import com.example.mvp_sample.Group.Data.GroupData;
 import com.example.mvp_sample.Group.Data.GroupInfo;
 import com.example.mvp_sample.Main.MainContract;
 
@@ -21,7 +22,7 @@ public interface GroupContract {
     interface Presenter extends BasePresenter {
         void setActivityView(GroupContract.ActivityView activityView);
 
-        void setAdapterModel(BaseAdapterContract.Model<List<GroupInfo>> adapterModel);
+        void setAdapterModel(BaseAdapterContract.Model<List<GroupData>> adapterModel);
 
         void setAdapterView(BaseAdapterContract.View adapterView);
     }
