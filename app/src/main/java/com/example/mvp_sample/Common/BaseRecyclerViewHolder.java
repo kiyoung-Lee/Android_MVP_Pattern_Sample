@@ -29,5 +29,7 @@ public abstract class BaseRecyclerViewHolder<T,P> extends RecyclerView.ViewHolde
         this.presenter = presenter;
     }
 
-    public abstract void bind(T data);
+    public void bind(T data) {}
+
+    public void bind(T data, int position) {}
 }
