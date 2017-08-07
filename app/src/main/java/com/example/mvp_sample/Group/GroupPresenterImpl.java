@@ -32,17 +32,20 @@ public class GroupPresenterImpl implements GroupContract.Presenter {
         this.activityView = activityView;
     }
 
+    //Unit Test: setAdapterModel_Test(), setAdapterModel_Null_Test()
     public void setAdapterModel(BaseAdapterContract.Model<List<GroupData>> adapterModel) {
         checkNotNull(adapterModel, "AdapterModel Is Null");
         this.adapterModel = adapterModel;
     }
 
+    //Unit Test: setAdapterView_Test(), setAdapterView_Null_Test()
     public void setAdapterView(BaseAdapterContract.View adapterView) {
         checkNotNull(adapterView, "AdapterView Is Null");
         this.adapterView = adapterView;
     }
 
     @Override
+    //Unit Test: start_Test()
     public void start() {
 
     }
