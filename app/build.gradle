@@ -39,6 +39,7 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:11.0.1'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.android.support:design:25.1.1'
+    compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
 
     // Dependencies for local unit tests
     testCompile "junit:junit:4.12"
