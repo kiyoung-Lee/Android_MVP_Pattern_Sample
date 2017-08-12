@@ -23,8 +23,8 @@ import butterknife.ButterKnife;
 
 public class MapFragment extends Fragment implements MapContract.FragmentView {
 
-    @BindView(R.id.map_view)
-    RelativeLayout mapContainer;
+//    @BindView(R.id.map_view)
+//    RelativeLayout mapContainer;
 
     @Nullable
     @Override
@@ -32,11 +32,11 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
             @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.map_frag, container, false);
-        ButterKnife.bind(this, view);
+//        ButterKnife.bind(this, view);
 
-        MapView mapView = new MapView(getActivity());
-        mapContainer.addView(mapView);
-        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(33.41, 126.52), 9, true);
+//        MapView mapView = new MapView(getActivity());
+//        mapContainer.addView(mapView);
+//        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(33.41, 126.52), 9, true);
 
         return view;
     }
