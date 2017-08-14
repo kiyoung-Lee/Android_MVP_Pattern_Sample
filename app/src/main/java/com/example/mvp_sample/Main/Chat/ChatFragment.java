@@ -18,6 +18,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Created by KiyoungLee on 2017-07-09.
  */
@@ -34,6 +36,11 @@ public class ChatFragment extends Fragment implements ChatContract.FragmentView 
     private Context context;
 
     public ChatFragment() {
+    }
+
+    public ChatFragment(Context context) {
+        checkNotNull(context, "Context Is Null");
+        this.context = context;
     }
 
     @Nullable

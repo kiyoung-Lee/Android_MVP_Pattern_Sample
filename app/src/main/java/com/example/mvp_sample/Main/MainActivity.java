@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         mainTab.addTab(mainTab.newTab().setText("MY"));
         mainTab.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
+        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), getApplicationContext());
         mainPager.setAdapter(mainPagerAdapter);
         mainPager.setCurrentItem(0);
 

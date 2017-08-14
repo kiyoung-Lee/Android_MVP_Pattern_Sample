@@ -1,5 +1,6 @@
 package com.example.mvp_sample.Main.MyPage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,14 +14,26 @@ import com.nhn.android.maps.NMapView;
 
 import butterknife.ButterKnife;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Created by KiyoungLee on 2017-07-08.
  */
 
 public class MyPageFragment extends Fragment implements MyPageContract.FragmentView {
 
+    private Context context;
     private NMapContext mMapContext;
     private static final String CLIENT_ID = "Mur1AkWhOxikPmbxQGfY";// 애플리케이션 클라이언트 아이디 값
+
+    public MyPageFragment(){
+
+    }
+
+    public MyPageFragment(Context context) {
+        checkNotNull(context, "Context Is Null");
+        this.context = context;
+    }
 
     @Nullable
     @Override
