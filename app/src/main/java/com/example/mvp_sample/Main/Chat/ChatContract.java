@@ -4,6 +4,7 @@ import com.example.mvp_sample.Common.BaseAdapterContract;
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseView;
 import com.example.mvp_sample.Main.Chat.Data.ChatData;
+import com.example.mvp_sample.Main.MainContract;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public interface ChatContract {
 
     interface FragmentView extends BaseView<Presenter> {
-
+        void setMainPresenter(MainContract.Presenter mainPresenter);
     }
 
     interface Presenter extends BasePresenter{

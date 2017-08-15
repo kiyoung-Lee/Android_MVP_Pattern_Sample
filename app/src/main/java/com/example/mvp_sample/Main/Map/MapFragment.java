@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 
+import com.example.mvp_sample.Main.MainContract;
 import com.example.mvp_sample.R;
 
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+import net.daum.mf.map.common.MapConnectionSettingManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +32,8 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
     RelativeLayout mapContainer;
 
     private Context context;
+    private MapContract.Presenter presenter;
+    private MainContract.Presenter mainPresenter;
 
     public MapFragment() {
 
@@ -58,5 +62,10 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
     @Override
     public void setPresenter(MapContract.Presenter presenter) {
 
+    }
+
+    public void setMainPresenter(MainContract.Presenter mainPresenter) {
+        checkNotNull(mainPresenter, "MainPresenter Is Null");
+        this.mainPresenter = mainPresenter;
     }
 }

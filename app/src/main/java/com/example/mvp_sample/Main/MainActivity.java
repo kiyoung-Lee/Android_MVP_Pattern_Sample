@@ -53,13 +53,15 @@ public class MainActivity extends AppCompatActivity
         mainTab.addTab(mainTab.newTab().setText("MY"));
         mainTab.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), getApplicationContext());
-        mainPager.setAdapter(mainPagerAdapter);
-        mainPager.setCurrentItem(0);
-
         presenter = new MainPresenterImpl(new MainRepositoryImp());
         presenter.setActivityView(this);
         presenter.start();
+
+        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), getApplicationContext());
+        mainPagerAdapter.setMainPresenter(presenter);
+
+        mainPager.setAdapter(mainPagerAdapter);
+        mainPager.setCurrentItem(0);
     }
 
     @OnClick(R.id.send_msg)

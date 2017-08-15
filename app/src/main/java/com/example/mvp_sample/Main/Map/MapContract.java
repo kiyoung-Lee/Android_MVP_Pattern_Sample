@@ -2,6 +2,7 @@ package com.example.mvp_sample.Main.Map;
 
 import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseView;
+import com.example.mvp_sample.Main.MainContract;
 
 /**
  * Created by KiyoungLee on 2017-07-08.
@@ -10,7 +11,7 @@ import com.example.mvp_sample.Common.BaseView;
 public interface MapContract {
 
     interface FragmentView extends BaseView<Presenter> {
-
+        void setMainPresenter(MainContract.Presenter mainPresenter);
     }
 
     interface Presenter extends BasePresenter{

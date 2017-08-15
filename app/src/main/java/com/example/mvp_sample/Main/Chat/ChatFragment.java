@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.mvp_sample.Main.Chat.Data.ChatRepositoryImpl;
+import com.example.mvp_sample.Main.MainContract;
 import com.example.mvp_sample.R;
 
 import butterknife.BindView;
@@ -31,9 +32,10 @@ public class ChatFragment extends Fragment implements ChatContract.FragmentView 
     @BindView(R.id.edit_chat)
     EditText editText;
 
-    private ChatContract.Presenter presenter;
-    private ChatAdapter adapter;
     private Context context;
+    private ChatAdapter adapter;
+    private ChatContract.Presenter presenter;
+    private MainContract.Presenter mainPresenter;
 
     public ChatFragment() {
     }
@@ -68,6 +70,11 @@ public class ChatFragment extends Fragment implements ChatContract.FragmentView 
     @Override
     public void setPresenter(ChatContract.Presenter presenter) {
 
+    }
+
+    public void setMainPresenter(MainContract.Presenter mainPresenter) {
+        checkNotNull(mainPresenter, "MainPresenter Is Null");
+        this.mainPresenter = mainPresenter;
     }
 
     @OnClick(R.id.txt_send)

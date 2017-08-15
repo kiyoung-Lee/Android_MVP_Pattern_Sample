@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mvp_sample.Main.MainContract;
 import com.example.mvp_sample.R;
 import com.nhn.android.maps.NMapContext;
 import com.nhn.android.maps.NMapView;
@@ -23,8 +24,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class MyPageFragment extends Fragment implements MyPageContract.FragmentView {
 
     private Context context;
+    private MyPageContract.Presenter presenter;
+    private MainContract.Presenter mainPresenter;
+
     private NMapContext mMapContext;
     private static final String CLIENT_ID = "Mur1AkWhOxikPmbxQGfY";// 애플리케이션 클라이언트 아이디 값
+
 
     public MyPageFragment(){
 
@@ -92,5 +97,10 @@ public class MyPageFragment extends Fragment implements MyPageContract.FragmentV
     @Override
     public void setPresenter(MyPageContract.Presenter presenter) {
 
+    }
+
+    public void setMainPresenter(MainContract.Presenter mainPresenter) {
+        checkNotNull(mainPresenter, "MainPresenter Is Null");
+        this.mainPresenter = mainPresenter;
     }
 }

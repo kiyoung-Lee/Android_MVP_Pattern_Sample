@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mvp_sample.Main.Feed.Data.FeedRepositoryImpl;
+import com.example.mvp_sample.Main.MainContract;
 import com.example.mvp_sample.R;
 
 import butterknife.ButterKnife;
@@ -22,8 +23,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class FeedFragment extends Fragment implements FeedContract.FragmentView {
 
     private Context context;
-    private FeedContract.Presenter presenter;
     private FeedAdapter adapter;
+    private FeedContract.Presenter presenter;
+    private MainContract.Presenter mainPresenter;
 
     public FeedFragment() {
     }
@@ -52,5 +54,10 @@ public class FeedFragment extends Fragment implements FeedContract.FragmentView 
     @Override
     public void setPresenter(FeedContract.Presenter presenter) {
 
+    }
+
+    public void setMainPresenter(MainContract.Presenter mainPresenter) {
+        checkNotNull(mainPresenter, "MainPresenter Is Null");
+        this.mainPresenter = mainPresenter;
     }
 }
