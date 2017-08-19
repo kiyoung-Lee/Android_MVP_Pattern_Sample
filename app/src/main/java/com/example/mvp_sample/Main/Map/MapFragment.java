@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 
 import com.example.mvp_sample.Main.MainContract;
+import com.example.mvp_sample.Main.Map.Data.MapRepositoryImpl;
 import com.example.mvp_sample.R;
 
 import net.daum.mf.map.api.MapPoint;
@@ -55,6 +56,10 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
         MapView mapView = new MapView(getActivity());
         mapContainer.addView(mapView);
         mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(33.41, 126.52), 9, true);
+
+        presenter = new MapPresenterImpl(new MapRepositoryImpl());
+        presenter.setFragmentView(this);
+        mainPresenter.setMapPresenter(presenter);
 
         return view;
     }

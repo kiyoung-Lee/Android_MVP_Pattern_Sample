@@ -1,8 +1,12 @@
 package com.example.mvp_sample.Main;
 
 import com.example.mvp_sample.Common.BaseAdapterContract;
+import com.example.mvp_sample.Main.Chat.ChatContract;
 import com.example.mvp_sample.Main.Chat.Data.ChatData;
 import com.example.mvp_sample.Main.Data.MainRepository;
+import com.example.mvp_sample.Main.Feed.FeedContract;
+import com.example.mvp_sample.Main.Map.MapContract;
+import com.example.mvp_sample.Main.MyPage.MyPageContract;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +25,10 @@ public class MainPresenterImpl implements MainContract.Presenter {
 
     private MainRepository repository;
     private MainContract.ActivityView activityView;
+    private ChatContract.Presenter chatPresenter;
+    private FeedContract.Presenter feedPresenter;
+    private MapContract.Presenter mapPresenter;
+    private MyPageContract.Presenter myPagePresenter;
 
     //Unit Test : Constructor_Test(), Constructor_Null_Test()
     public MainPresenterImpl(MainRepository repository) {
@@ -33,6 +41,26 @@ public class MainPresenterImpl implements MainContract.Presenter {
     public void setActivityView(MainContract.ActivityView activityView) {
         checkNotNull(activityView, "Activity Is Null");
         this.activityView = activityView;
+    }
+
+    public void setChatPresenter(ChatContract.Presenter chatPresenter) {
+        checkNotNull(chatPresenter, "ChatPresenter Is Null");
+        this.chatPresenter = chatPresenter;
+    }
+
+    public void setFeedPresenter(FeedContract.Presenter feedPresenter) {
+        checkNotNull(feedPresenter, "FeedPresenter Is Null");
+        this.feedPresenter = feedPresenter;
+    }
+
+    public void setMapPresenter(MapContract.Presenter mapPresenter) {
+        checkNotNull(mapPresenter, "MapPresenter Is Null");
+        this.mapPresenter = mapPresenter;
+    }
+
+    public void setMyPagePresenter(MyPageContract.Presenter myPagePresenter) {
+        checkNotNull(myPagePresenter, "MyPagePresenter Is Null");
+        this.myPagePresenter = myPagePresenter;
     }
 
     @Override

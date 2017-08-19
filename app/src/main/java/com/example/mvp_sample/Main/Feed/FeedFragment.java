@@ -41,12 +41,16 @@ public class FeedFragment extends Fragment implements FeedContract.FragmentView 
             @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.feed_frag, container, false);
-        ButterKnife.bind(getActivity());
+        ButterKnife.bind(this, view);
 
         adapter = new FeedAdapter(context);
 
         presenter = new FeedPresenterImpl(new FeedRepositoryImpl());
         presenter.setFragmentView(this);
+        mainPresenter.setFeedPresenter(presenter);
+
+        presenter.setFeedAdapterModel(adapter);
+        presenter.setFeedAdapterView(adapter);
 
         return view;
     }

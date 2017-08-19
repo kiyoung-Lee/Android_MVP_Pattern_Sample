@@ -52,14 +52,16 @@ public class ChatFragment extends Fragment implements ChatContract.FragmentView 
 
         View view = inflater.inflate(R.layout.chat_frag, container, false);
         ButterKnife.bind(this, view);
-        context = getActivity().getApplicationContext();
 
         presenter = new ChatPresenterImpl(new ChatRepositoryImpl());
         presenter.setFragmentView(this);
+        mainPresenter.setChatPresenter(presenter);
+
         chatList.setLayoutManager(new LinearLayoutManager(context));
         adapter = new ChatAdapter(context);
         presenter.setChatAdapterModel(adapter);
         presenter.setChatAdapterView(adapter);
+
         adapter.setPresenter(presenter);
         chatList.setAdapter(adapter);
 
