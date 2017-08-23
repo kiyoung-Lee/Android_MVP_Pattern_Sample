@@ -31,11 +31,13 @@ public class FeedPresenterImpl implements FeedContract.Presenter {
         this.fragmentView = fragmentView;
     }
 
+    //Unit Test: setFeedAdapterModel_Test(), setFeedAdapterModel_Null_Test()
     public void setFeedAdapterModel(BaseAdapterContract.Model<List<FeedData>> feedAdapterModel) {
         checkNotNull(feedAdapterModel, "FeedAdapterModel Is Null");
         this.feedAdapterModel = feedAdapterModel;
     }
 
+    //Unit Test: setFeedAdapterView_Test(), setFeedAdapterView_Null_Test()
     public void setFeedAdapterView(BaseAdapterContract.View feedAdapterView) {
         checkNotNull(feedAdapterView, "FeedAdapterView Is Null");
         this.feedAdapterView = feedAdapterView;
