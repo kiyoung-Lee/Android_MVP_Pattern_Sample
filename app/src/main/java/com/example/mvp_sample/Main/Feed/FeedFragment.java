@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import com.example.mvp_sample.Main.Feed.Data.FeedRepositoryImpl;
 import com.example.mvp_sample.Main.MainContract;
 import com.example.mvp_sample.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -21,6 +24,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public class FeedFragment extends Fragment implements FeedContract.FragmentView {
+
+    @BindView(R.id.feed_list)
+    RecyclerView feedList;
 
     private Context context;
     private FeedAdapter adapter;
@@ -44,6 +50,8 @@ public class FeedFragment extends Fragment implements FeedContract.FragmentView 
         ButterKnife.bind(this, view);
 
         adapter = new FeedAdapter(context);
+        feedList.setLayoutManager(new LinearLayoutManager(context));
+        feedList.setAdapter(adapter);
 
         presenter = new FeedPresenterImpl(new FeedRepositoryImpl());
         presenter.setFragmentView(this);

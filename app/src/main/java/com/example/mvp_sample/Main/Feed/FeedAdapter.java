@@ -2,6 +2,8 @@ package com.example.mvp_sample.Main.Feed;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mvp_sample.Common.BaseAdapterContract;
@@ -9,6 +11,7 @@ import com.example.mvp_sample.Common.BasePresenter;
 import com.example.mvp_sample.Common.BaseRecyclerViewHolder;
 import com.example.mvp_sample.Common.BaseView;
 import com.example.mvp_sample.Main.Feed.Data.FeedData;
+import com.example.mvp_sample.Main.Feed.ViewHolder.FeedHolderFactory;
 
 import java.util.List;
 
@@ -57,7 +60,11 @@ public class FeedAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        int resId = FeedHolderFactory.getViewLayoutId(viewType);
+        View v = LayoutInflater.from(context).inflate(resId, parent);
+        BaseRecyclerViewHolder holder = FeedHolderFactory.getViewHolder(viewType, context, v);
+        holder.setPresenter(presenter);
+        return holder;
     }
 
     @Override

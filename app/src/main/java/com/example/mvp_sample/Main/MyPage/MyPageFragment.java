@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mvp_sample.Main.MainContract;
+import com.example.mvp_sample.Main.MyPage.Data.MyPageRepositoryImpl;
 import com.example.mvp_sample.R;
 import com.nhn.android.maps.NMapContext;
 import com.nhn.android.maps.NMapView;
@@ -27,10 +28,6 @@ public class MyPageFragment extends Fragment implements MyPageContract.FragmentV
     private MyPageContract.Presenter presenter;
     private MainContract.Presenter mainPresenter;
 
-    private NMapContext mMapContext;
-    private static final String CLIENT_ID = "Mur1AkWhOxikPmbxQGfY";// 애플리케이션 클라이언트 아이디 값
-
-
     public MyPageFragment(){
 
     }
@@ -47,51 +44,10 @@ public class MyPageFragment extends Fragment implements MyPageContract.FragmentV
         View view = inflater.inflate(R.layout.mypage_frag, container, false);
         ButterKnife.bind(this, view);
 
-
+        presenter = new MyPagePresenterImpl(new MyPageRepositoryImpl());
+        presenter.setFragmentView(this);
+        mainPresenter.setMyPagePresenter(presenter);
         return view;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mMapContext =  new NMapContext(super.getActivity());
-        mMapContext.onCreate();
-    }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        NMapView mapView = (NMapView)getView().findViewById(R.id.mapView);
-        mapView.setClientId(CLIENT_ID);// 클라이언트 아이디 설정
-        mMapContext.setupMapView(mapView);
-    }
-    @Override
-    public void onStart(){
-        super.onStart();
-        mMapContext.onStart();
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        mMapContext.onResume();
-    }
-    @Override
-    public void onPause() {
-        super.onPause();
-        mMapContext.onPause();
-    }
-    @Override
-    public void onStop() {
-        mMapContext.onStop();
-        super.onStop();
-    }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-    @Override
-    public void onDestroy() {
-        mMapContext.onDestroy();
-        super.onDestroy();
     }
 
     @Override
