@@ -20,47 +20,27 @@ public class DynamicPresenterTest {
 
     @Test
     public void constructor_Test(){
-        try {
-            DynamicDataRepository dataSource = mock(DynamicDataRepositoryImpl.class);
-            DynamicContract.Presenter presenter = new DynamicPresenterImpl(dataSource);
-        }catch (Exception ex){
-            fail();
-        }
+        DynamicDataRepository dataSource = mock(DynamicDataRepositoryImpl.class);
+        DynamicContract.Presenter presenter = new DynamicPresenterImpl(dataSource);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void constructor_Null_Test(){
-        try{
-            DynamicContract.Presenter presenter = new DynamicPresenterImpl(null);
-        }catch (NullPointerException ex){
-            assertEquals(ex.getMessage(), "Repository Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        DynamicContract.Presenter presenter = new DynamicPresenterImpl(null);
     }
 
     @Test
     public void setActivityView_Test(){
-        try {
-            DynamicDataRepository dataSource = mock(DynamicDataRepositoryImpl.class);
-            DynamicContract.Presenter presenter = new DynamicPresenterImpl(dataSource);
-            DynamicContract.ActivityView ActivityView = mock(DynamicActivity.class);
-            presenter.setActivityView(ActivityView);
-        }catch (Exception ex){
-            fail();
-        }
+        DynamicDataRepository dataSource = mock(DynamicDataRepositoryImpl.class);
+        DynamicContract.Presenter presenter = new DynamicPresenterImpl(dataSource);
+        DynamicContract.ActivityView ActivityView = mock(DynamicActivity.class);
+        presenter.setActivityView(ActivityView);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setActivityView_Null_Test(){
-        try {
-            DynamicDataRepository dataSource = mock(DynamicDataRepositoryImpl.class);
-            DynamicContract.Presenter presenter = new DynamicPresenterImpl(dataSource);
-            presenter.setActivityView(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "ActivityView Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        DynamicDataRepository dataSource = mock(DynamicDataRepositoryImpl.class);
+        DynamicContract.Presenter presenter = new DynamicPresenterImpl(dataSource);
+        presenter.setActivityView(null);
     }
 }

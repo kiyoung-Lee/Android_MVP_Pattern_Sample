@@ -20,47 +20,27 @@ public class LoginPresenterTest {
 
     @Test
     public void constructor_Test(){
-        try {
-            LoginRepository dataSource = mock(LoginRepositoryImpl.class);
-            LoginContract.Presenter presenter = new LoginPresenterImpl(dataSource);
-        }catch (Exception ex){
-            fail();
-        }
+        LoginRepository dataSource = mock(LoginRepositoryImpl.class);
+        LoginContract.Presenter presenter = new LoginPresenterImpl(dataSource);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void constructor_Null_Test(){
-        try{
-            LoginContract.Presenter presenter = new LoginPresenterImpl(null);
-        }catch (NullPointerException ex){
-            assertEquals(ex.getMessage(), "Repository Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        LoginContract.Presenter presenter = new LoginPresenterImpl(null);
     }
 
     @Test
     public void setActivityView_Test(){
-        try {
-            LoginRepository dataSource = mock(LoginRepositoryImpl.class);
-            LoginContract.Presenter presenter = new LoginPresenterImpl(dataSource);
-            LoginContract.ActivityView ActivityView = mock(LoginActivity.class);
-            presenter.setActivityView(ActivityView);
-        }catch (Exception ex){
-            fail();
-        }
+        LoginRepository dataSource = mock(LoginRepositoryImpl.class);
+        LoginContract.Presenter presenter = new LoginPresenterImpl(dataSource);
+        LoginContract.ActivityView ActivityView = mock(LoginActivity.class);
+        presenter.setActivityView(ActivityView);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setActivityView_Null_Test(){
-        try {
-            LoginRepository dataSource = mock(LoginRepositoryImpl.class);
-            LoginContract.Presenter presenter = new LoginPresenterImpl(dataSource);
-            presenter.setActivityView(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "ActivityView Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        LoginRepository dataSource = mock(LoginRepositoryImpl.class);
+        LoginContract.Presenter presenter = new LoginPresenterImpl(dataSource);
+        presenter.setActivityView(null);
     }
 }

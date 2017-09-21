@@ -21,133 +21,78 @@ public class ChatPresenterTest {
 
     @Test
     public void constructor_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-        }catch (Exception ex){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void constructor_Null_Test(){
-        try{
-            ChatContract.Presenter presenter = new ChatPresenterImpl(null);
-        }catch (NullPointerException ex){
-            assertEquals(ex.getMessage(), "Repository Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        ChatContract.Presenter presenter = new ChatPresenterImpl(null);
     }
 
     @Test
     public void setFragmentView_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            ChatContract.FragmentView fragmentView = mock(ChatFragment.class);
-            presenter.setFragmentView(fragmentView);
-        }catch (Exception ex){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        ChatContract.FragmentView fragmentView = mock(ChatFragment.class);
+        presenter.setFragmentView(fragmentView);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setFragmentView_Null_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            presenter.setFragmentView(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "FragmentView Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        presenter.setFragmentView(null);
     }
 
     @Test
     public void setAdapterModel_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            BaseAdapterContract.Model adapterModel = mock(BaseAdapterContract.Model.class);
-            presenter.setChatAdapterModel(adapterModel);
-        }catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        BaseAdapterContract.Model adapterModel = mock(BaseAdapterContract.Model.class);
+        presenter.setChatAdapterModel(adapterModel);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setAdapterModel_Null_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            presenter.setChatAdapterModel(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "ChatAdapterModel Is Null");
-        }catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        presenter.setChatAdapterModel(null);
     }
 
     @Test
     public void setAdapterView_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            BaseAdapterContract.View adapterView = mock(BaseAdapterContract.View.class);
-            presenter.setChatAdapterView(adapterView);
-        }catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        BaseAdapterContract.View adapterView = mock(BaseAdapterContract.View.class);
+        presenter.setChatAdapterView(adapterView);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setAdapterView_Null_Test(){
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            presenter.setChatAdapterView(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "ChatAdapterView Is Null");
-        }catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        presenter.setChatAdapterView(null);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void sendMessage_Datareference_Null_Test() {
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            presenter.sendMessage("hi");
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "dataReference Is Null");
-        }
-        catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        presenter.sendMessage("hi");
     }
 
-    @Test
+    @Test 
     public void sendMessage_Msg_Null_Test() {
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            presenter.sendMessage(null);
-        }catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        presenter.sendMessage(null);
     }
 
     @Test
     public void sendMessage_Msg_empty_Test() {
-        try {
-            ChatRepository dataSource = mock(ChatRepositoryImpl.class);
-            ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
-            presenter.sendMessage("");
-        }catch (Exception e){
-            fail();
-        }
+        ChatRepository dataSource = mock(ChatRepositoryImpl.class);
+        ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
+        presenter.sendMessage("");
     }
 }

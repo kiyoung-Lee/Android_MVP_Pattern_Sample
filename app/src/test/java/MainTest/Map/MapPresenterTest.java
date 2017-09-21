@@ -20,23 +20,13 @@ public class MapPresenterTest {
 
     @Test
     public void constructor_Test(){
-        try {
-            MapRepository dataSource = mock(MapRepositoryImpl.class);
-            MapContract.Presenter presenter = new MapPresenterImpl(dataSource);
-        }catch (Exception ex){
-            fail();
-        }
+        MapRepository dataSource = mock(MapRepositoryImpl.class);
+        MapContract.Presenter presenter = new MapPresenterImpl(dataSource);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void constructor_Null_Test(){
-        try{
-            MapContract.Presenter presenter = new MapPresenterImpl(null);
-        }catch (NullPointerException ex){
-            assertEquals(ex.getMessage(), "Repository Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        MapContract.Presenter presenter = new MapPresenterImpl(null);
     }
 
     @Test
@@ -51,16 +41,10 @@ public class MapPresenterTest {
         }
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setFragmentView_Null_Test(){
-        try {
-            MapRepository dataSource = mock(MapRepositoryImpl.class);
-            MapContract.Presenter presenter = new MapPresenterImpl(dataSource);
-            presenter.setFragmentView(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "FragmentView Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        MapRepository dataSource = mock(MapRepositoryImpl.class);
+        MapContract.Presenter presenter = new MapPresenterImpl(dataSource);
+        presenter.setFragmentView(null);
     }
 }

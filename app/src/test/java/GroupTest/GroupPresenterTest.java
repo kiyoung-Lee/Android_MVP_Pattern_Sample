@@ -25,108 +25,64 @@ public class GroupPresenterTest {
 
     @Test
     public void constructor_Test(){
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-        }catch (Exception ex){
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void constructor_Null_Test(){
-        try{
-            GroupContract.Presenter presenter = new GroupPresenterImpl(null);
-        }catch (NullPointerException ex){
-            assertEquals(ex.getMessage(), "Repository Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        GroupContract.Presenter presenter = new GroupPresenterImpl(null);
     }
 
     @Test
     public void setActivityView_Test(){
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            GroupContract.ActivityView ActivityView = mock(GroupActivity.class);
-            presenter.setActivityView(ActivityView);
-        }catch (Exception ex){
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        GroupContract.ActivityView ActivityView = mock(GroupActivity.class);
+        presenter.setActivityView(ActivityView);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setActivityView_Null_Test(){
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            presenter.setActivityView(null);
-        }catch (NullPointerException e){
-            assertEquals(e.getMessage(), "ActivityView Is Null");
-        }catch (Exception ex){
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        presenter.setActivityView(null);
     }
 
     @Test
     public void setAdapterModel_Test() {
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            BaseAdapterContract.Model<List<GroupData>> adapterModel = mock(BaseAdapterContract.Model.class);
-            presenter.setAdapterModel(adapterModel);
-        } catch (Exception e) {
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        BaseAdapterContract.Model<List<GroupData>> adapterModel = mock(BaseAdapterContract.Model.class);
+        presenter.setAdapterModel(adapterModel);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setAdapterModel_Null_Test() {
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            presenter.setAdapterModel(null);
-        } catch (NullPointerException e){
-            assertEquals(e.getMessage(), "AdapterModel Is Null");
-        } catch (Exception e) {
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        presenter.setAdapterModel(null);
     }
 
     @Test
     public void setAdapterView_Test() {
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            BaseAdapterContract.View adapterView = mock(BaseAdapterContract.View.class);
-            presenter.setAdapterView(adapterView);
-        } catch (Exception e) {
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        BaseAdapterContract.View adapterView = mock(BaseAdapterContract.View.class);
+        presenter.setAdapterView(adapterView);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void setAdapterView_Null_Test() {
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            presenter.setAdapterView(null);
-        } catch (NullPointerException e){
-            assertEquals(e.getMessage(), "AdapterView Is Null");
-        } catch (Exception e) {
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        presenter.setAdapterView(null);
     }
 
     @Test
     public void start_Test() {
-        try {
-            GroupRepository dataSource = mock(GroupRepositoryImpl.class);
-            GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
-            presenter.start();
-        } catch (Exception e) {
-            fail();
-        }
+        GroupRepository dataSource = mock(GroupRepositoryImpl.class);
+        GroupContract.Presenter presenter = new GroupPresenterImpl(dataSource);
+        presenter.start();
     }
 }

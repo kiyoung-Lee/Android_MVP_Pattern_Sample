@@ -32,27 +32,16 @@ public class ChatRepositoryTest {
 
     @Test
     public void addChatData_Test() {
-        try {
-            List<ChatData> chatList
-                    = repository.addChatData(mock(ChatData.class));
+        List<ChatData> chatList
+                = repository.addChatData(mock(ChatData.class));
 
-            assertNotNull(chatList);
-        }catch (Exception e){
-            fail();
-        }
+        assertNotNull(chatList);
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void addChatData_addItem_Null_Test() {
-        try {
             List<ChatData> chatList
                     = repository.addChatData(null);
-
             assertNotNull(chatList);
-        } catch (NullPointerException e){
-            assertEquals(e.getMessage(), "AddItem Is Null");
-        } catch (Exception e){
-            fail();
-        }
     }
 }

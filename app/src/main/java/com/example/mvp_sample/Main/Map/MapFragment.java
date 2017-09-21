@@ -26,9 +26,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class MapFragment extends Fragment implements MapContract.FragmentView {
 
-    @BindView(R.id.map_view)
-    RelativeLayout mapContainer;
-
     private Context context;
     private MapContract.Presenter presenter;
     private MainContract.Presenter mainPresenter;

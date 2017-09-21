@@ -26,29 +26,19 @@ public class DynamicRepositoryTest {
 
     @Test
     public void getDynamicData_Test() {
-        try {
-            repository.getDynamicData(new DynamicDataRepository.onMessageLoadedCallBack() {
-                @Override
-                public void onMessageListLoaded(DynamicData dynamicData) {
-                    assertNotNull(dynamicData);
-                    assertEquals(dynamicData.getSuccess(), 1);
-                    assertEquals(dynamicData.getMessage(), "success");
-                    assertNotNull(dynamicData.getMessageList());
-                }
-            });
-        } catch (Exception e) {
-            fail();
-        }
+        repository.getDynamicData(new DynamicDataRepository.onMessageLoadedCallBack() {
+            @Override
+            public void onMessageListLoaded(DynamicData dynamicData) {
+                assertNotNull(dynamicData);
+                assertEquals(dynamicData.getSuccess(), 1);
+                assertEquals(dynamicData.getMessage(), "success");
+                assertNotNull(dynamicData.getMessageList());
+            }
+        });
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void getDynamicData_Callback_Null_Test() {
-        try {
-            repository.getDynamicData(null);
-        } catch (NullPointerException e){
-            assertEquals(e.getMessage(), "CallBack Is Null");
-        } catch (Exception e) {
-            fail();
-        }
+        repository.getDynamicData(null);
     }
 }

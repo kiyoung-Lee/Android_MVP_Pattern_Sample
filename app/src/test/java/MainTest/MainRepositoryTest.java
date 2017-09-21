@@ -42,14 +42,8 @@ public class MainRepositoryTest {
         });
     }
 
-    @Test
+    @Test (expected = NullPointerException.class)
     public void getDataList_Null_Test(){
-        try {
-            repository.getDataList(null);
-        }catch (NullPointerException ex){
-            assertEquals(ex.getMessage(), "CallBack Is Null");
-        }catch (Exception e){
-            fail();
-        }
+        repository.getDataList(null);
     }
 }
