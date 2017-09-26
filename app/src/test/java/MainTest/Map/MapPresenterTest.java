@@ -31,14 +31,10 @@ public class MapPresenterTest {
 
     @Test
     public void setFragmentView_Test(){
-        try {
-            MapRepository dataSource = mock(MapRepositoryImpl.class);
-            MapContract.Presenter presenter = new MapPresenterImpl(dataSource);
-            MapContract.FragmentView fragmentView = mock(MapFragment.class);
-            presenter.setFragmentView(fragmentView);
-        }catch (Exception ex){
-            fail();
-        }
+        MapRepository dataSource = mock(MapRepositoryImpl.class);
+        MapContract.Presenter presenter = new MapPresenterImpl(dataSource);
+        MapContract.FragmentView fragmentView = mock(MapFragment.class);
+        presenter.setFragmentView(fragmentView);
     }
 
     @Test (expected = NullPointerException.class)

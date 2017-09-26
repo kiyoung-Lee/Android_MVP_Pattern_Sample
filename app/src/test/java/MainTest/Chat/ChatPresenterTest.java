@@ -82,7 +82,7 @@ public class ChatPresenterTest {
         presenter.sendMessage("hi");
     }
 
-    @Test 
+    @Test
     public void sendMessage_Msg_Null_Test() {
         ChatRepository dataSource = mock(ChatRepositoryImpl.class);
         ChatContract.Presenter presenter = new ChatPresenterImpl(dataSource);
