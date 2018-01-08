@@ -19,7 +19,7 @@ public interface MainContract {
         void setPresenter(Presenter presenter);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter {
 
         void setActivityView(ActivityView activityView);
 
@@ -30,8 +30,5 @@ public interface MainContract {
         void setMapPresenter(MapContract.Presenter mapPresenter);
 
         void setMyPagePresenter(MyPageContract.Presenter myPagePresenter);
-
-        @Override
-        void start();
     }
 }
