@@ -14,9 +14,8 @@ import com.example.mvp_sample.Main.MyPage.MyPageContract;
 
 public interface MainContract {
 
-    interface ActivityView extends BaseView<Presenter> {
-        @Override
-        void setPresenter(Presenter presenter);
+    interface ActivityView {
+
     }
 
     interface Presenter {

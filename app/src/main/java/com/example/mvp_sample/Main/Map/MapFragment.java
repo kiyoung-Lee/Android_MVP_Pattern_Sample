@@ -101,11 +101,6 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
         super.onDestroy();
     }
 
-    @Override
-    public void setPresenter(MapContract.Presenter presenter) {
-
-    }
-
     public void setMainPresenter(MainContract.Presenter mainPresenter) {
         checkNotNull(mainPresenter, "MainPresenter Is Null");
         this.mainPresenter = mainPresenter;

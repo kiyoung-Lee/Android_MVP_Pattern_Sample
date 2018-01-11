@@ -10,8 +10,7 @@ import com.example.mvp_sample.Main.MainContract;
 
 public interface MyPageContract {
 
-    interface FragmentView extends BaseView<Presenter> {
-        void setMainPresenter(MainContract.Presenter mainPresenter);
+    interface FragmentView  {
     }
 
     interface Presenter extends BasePresenter{

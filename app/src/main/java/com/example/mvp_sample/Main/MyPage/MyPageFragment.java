@@ -50,11 +50,6 @@ public class MyPageFragment extends Fragment implements MyPageContract.FragmentV
         return view;
     }
 
-    @Override
-    public void setPresenter(MyPageContract.Presenter presenter) {
-
-    }
-
     public void setMainPresenter(MainContract.Presenter mainPresenter) {
         checkNotNull(mainPresenter, "MainPresenter Is Null");
         this.mainPresenter = mainPresenter;
