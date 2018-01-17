@@ -19,27 +19,19 @@ public class FeedPresenterImpl implements FeedContract.Presenter {
     private BaseAdapterContract.Model<List<FeedData>> feedAdapterModel;
     private BaseAdapterContract.View feedAdapterView;
 
-    //Unit Test: constructor_Test(), constructor_Null_Test()
     public FeedPresenterImpl(FeedRepositoy repository) {
-        checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
 
-    //Unit Test: setFragmentView_Test(), setFragmentView_Null_Test()
     public void setFragmentView(FeedContract.FragmentView fragmentView) {
-        checkNotNull(fragmentView, "FragmentView Is Null");
         this.fragmentView = fragmentView;
     }
 
-    //Unit Test: setFeedAdapterModel_Test(), setFeedAdapterModel_Null_Test()
     public void setFeedAdapterModel(BaseAdapterContract.Model<List<FeedData>> feedAdapterModel) {
-        checkNotNull(feedAdapterModel, "FeedAdapterModel Is Null");
         this.feedAdapterModel = feedAdapterModel;
     }
 
-    //Unit Test: setFeedAdapterView_Test(), setFeedAdapterView_Null_Test()
     public void setFeedAdapterView(BaseAdapterContract.View feedAdapterView) {
-        checkNotNull(feedAdapterView, "FeedAdapterView Is Null");
         this.feedAdapterView = feedAdapterView;
     }
 

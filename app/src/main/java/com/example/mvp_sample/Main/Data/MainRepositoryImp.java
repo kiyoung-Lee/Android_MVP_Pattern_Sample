@@ -19,7 +19,6 @@ public class MainRepositoryImp implements MainRepository {
     }
 
     @Override
-    //Unit Test: getDataList_Test(), getDataList_Null_Test()
     public void getDataList(LoadListCallBack callBack) {
         checkNotNull(callBack, "CallBack Is Null");
         mainDataList = new ArrayList<>();

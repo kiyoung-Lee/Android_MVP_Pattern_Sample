@@ -1,23 +1,16 @@
-package MainTest;
-
-import com.example.mvp_sample.Main.Data.MainData;
-import com.example.mvp_sample.Main.Data.MainRepository;
-import com.example.mvp_sample.Main.Data.MainRepositoryImp;
+package com.example.mvp_sample.Main.Data;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
- * Created by kiyoung Lee on 2017-05-28.
+ * Created by kiyoungLee on 2018-01-17.
  */
-
-public class MainRepositoryTest {
+public class MainRepositoryImpTest {
 
     private MainRepository repository;
 
@@ -46,4 +39,5 @@ public class MainRepositoryTest {
     public void getDataList_Null_Test(){
         repository.getDataList(null);
     }
+
 }
