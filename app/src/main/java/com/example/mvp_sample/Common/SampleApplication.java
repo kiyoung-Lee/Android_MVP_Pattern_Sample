@@ -2,6 +2,7 @@ package com.example.mvp_sample.Common;
 
 import android.app.Application;
 
+import com.example.mvp_sample.di.DaggerAppComponent;
 import com.facebook.login.LoginManager;
 
 import dagger.android.AndroidInjector;
@@ -22,7 +23,6 @@ public class SampleApplication extends DaggerApplication {
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
         return DaggerAppComponent.builder().application(this).build();
     }
-
 
     @Override
     public void onTerminate() {
