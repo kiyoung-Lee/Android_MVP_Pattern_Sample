@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity
 
         presenter = new MainPresenterImpl(new MainRepositoryImp());
         presenter.setActivityView(this);
-        presenter.start();
 
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), getApplicationContext());
         mainPagerAdapter.setMainPresenter(presenter);

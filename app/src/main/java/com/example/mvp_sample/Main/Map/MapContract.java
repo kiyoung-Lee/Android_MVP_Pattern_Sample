@@ -11,7 +11,7 @@ import com.example.mvp_sample.Main.MainContract;
 public interface MapContract {
 
     interface FragmentView {
-
+        void setMainPresenter(MainContract.Presenter mainPresenter);
     }
 
     interface Presenter extends BasePresenter{
