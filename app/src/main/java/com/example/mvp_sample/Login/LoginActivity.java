@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.mvp_sample.FlowController.FlowController;
 import com.example.mvp_sample.Login.Data.LoginRepositoryImpl;
 import com.example.mvp_sample.Main.MainActivity;
 import com.example.mvp_sample.R;
@@ -134,7 +135,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
     }
 
     private void InitApp(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        FlowController.launchMainActivity(this);
     }
 }
