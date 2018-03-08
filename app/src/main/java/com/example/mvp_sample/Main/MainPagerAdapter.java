@@ -27,7 +27,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 
     public MainPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
-        checkNotNull(context, "Context Is Null");
         this.context = context;
     }
 
@@ -62,7 +61,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     }
 
     public void setMainPresenter(MainContract.Presenter mainPresenter) {
-        checkNotNull(mainPresenter, "MainPresenter Is Null");
         this.mainPresenter = mainPresenter;
     }
 }

@@ -102,7 +102,6 @@ public class MapFragment extends Fragment implements MapContract.FragmentView {
     }
 
     public void setMainPresenter(MainContract.Presenter mainPresenter) {
-        checkNotNull(mainPresenter, "MainPresenter Is Null");
         this.mainPresenter = mainPresenter;
     }
 }

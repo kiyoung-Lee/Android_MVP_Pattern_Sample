@@ -29,7 +29,6 @@ public class FeedAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
     private List<FeedData> feedDataList;
 
     public FeedAdapter(Context context) {
-        checkNotNull(context, "Context Is Null");
         this.context = context;
     }
 
@@ -43,7 +42,6 @@ public class FeedAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public void setPresenter(BasePresenter presenter) {
-        checkNotNull(presenter, "Presenter Is Null");
         this.presenter = (FeedContract.Presenter) presenter;
     }
 
@@ -54,7 +52,6 @@ public class FeedAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public void replaceData(List<FeedData> data) {
-        checkNotNull(data, "FeedDataList Is Null");
         this.feedDataList = data;
     }
 

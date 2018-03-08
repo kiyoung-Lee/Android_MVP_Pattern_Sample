@@ -28,7 +28,6 @@ public class GroupAdatper extends RecyclerView.Adapter<BaseRecyclerViewHolder>
     private List<GroupData> groupList;
 
     public GroupAdatper(Context context) {
-        checkNotNull(context, "Context Is Null");
         this.context = context;
     }
 
@@ -42,7 +41,6 @@ public class GroupAdatper extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public void setPresenter(BasePresenter presenter) {
-        checkNotNull(presenter, "Presenter Is Null");
         this.presenter = (GroupContract.Presenter) presenter;
     }
 
@@ -53,7 +51,6 @@ public class GroupAdatper extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     @Override
     public void replaceData(List<GroupData> data) {
-        checkNotNull(data, "GroupList Is Null");
         this.groupList = data;
     }
 

@@ -28,7 +28,6 @@ public class DynamicListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHol
     private List<Message> messageList;
 
     public DynamicListAdapter(Context context) {
-        checkNotNull(context, "Context Is Null");
         this.context = context;
     }
 
@@ -42,7 +41,6 @@ public class DynamicListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHol
 
     @Override
     public void setPresenter(BasePresenter presenter) {
-        checkNotNull(presenter, "Presenter Is Null");
         this.presenter = (DynamicContract.Presenter) presenter;
     }
 
@@ -53,13 +51,11 @@ public class DynamicListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHol
 
     @Override
     public void replaceData(List<Message> data) {
-        checkNotNull(data, "MessageList Is Null");
         this.messageList = data;
     }
 
     @Override
     public int getItemViewType(int position) {
-        checkNotNull(messageList, "MessageList Is Null");
         return messageList.get(position).getViewType();
     }
 

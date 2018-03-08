@@ -29,25 +29,21 @@ public class ChatPresenterImpl implements ChatContract.Presenter {
 
     //Unit Test: constructor_Test(), constructor_Null_Test()
     public ChatPresenterImpl(ChatRepository repository) {
-        checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
 
     //Unit Test: setFragmentView_Test(), setFragmentView_Null_Test()
     public void setFragmentView(ChatContract.FragmentView fragmentView) {
-        checkNotNull(fragmentView, "FragmentView Is Null");
         this.fragmentView = fragmentView;
     }
 
     //Unit Test: setAdapterModel_Test(), setAdapterModel_Null_Test()
     public void setChatAdapterModel(BaseAdapterContract.Model<List<ChatData>> chatAdapterModel) {
-        checkNotNull(chatAdapterModel, "ChatAdapterModel Is Null");
         this.chatAdapterModel = chatAdapterModel;
     }
 
     //Unit Test: setAdapterView_Test(), setAdapterView_Null_Test()
     public void setChatAdapterView(BaseAdapterContract.View chatAdapterView) {
-        checkNotNull(chatAdapterView, "ChatAdapterView Is Null");
         this.chatAdapterView = chatAdapterView;
     }
 
@@ -66,12 +62,10 @@ public class ChatPresenterImpl implements ChatContract.Presenter {
                 ChatData addItem = dataSnapshot.getValue(ChatData.class);
                 List<ChatData> chatList = repository.addChatData(addItem);
 
-                checkNotNull(chatList, "ChatListData Is Null");
-                checkNotNull(chatAdapterModel, "AdapterModel Is Null");
-                checkNotNull(chatAdapterView, "AdapterView Is Null");
-
-                chatAdapterModel.replaceData(chatList);
-                chatAdapterView.notifyAdapter();
+                if(chatAdapterModel != null)
+                    chatAdapterModel.replaceData(chatList);
+                if(chatAdapterView != null)
+                    chatAdapterView.notifyAdapter();
             }
 
             @Override
@@ -100,9 +94,10 @@ public class ChatPresenterImpl implements ChatContract.Presenter {
     //Unit Test: sendMessage_Datareference_Null_Test(), sendMessage_Msg_Null_Test(), sendMessage_Msg_empty_Test()
     public void sendMessage(String msg) {
         if(msg != null && msg != "") {
-            checkNotNull(databaseReference, "dataReference Is Null");
-            ChatData chatData = new ChatData("Michal", msg);
-            databaseReference.child("hello").push().setValue(chatData);
+            if(databaseReference != null) {
+                ChatData chatData = new ChatData("Michal", msg);
+                databaseReference.child("hello").push().setValue(chatData);
+            }
         }
     }
 }

@@ -33,7 +33,6 @@ public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
 
     //UI Test: constructor_Null_Test()
     public ChatAdapter(Context context) {
-        checkNotNull(context, "Context Is Null");
         this.context = context;
     }
 
@@ -48,14 +47,12 @@ public class ChatAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
     @Override
     //UI Test: setPresenter_Test(), setPresenter_Null_Test()
     public void setPresenter(BasePresenter presenter) {
-        checkNotNull(presenter, "Presenter Is Null");
         this.presenter = (ChatContract.Presenter) presenter;
     }
 
     @Override
     //UI Test : replaceData_Test(), replaceData_Null_Test()
     public void replaceData(List<ChatData> chatList) {
-        checkNotNull(chatList, "ChatList Is Null");
         this.chatList = chatList;
     }
 

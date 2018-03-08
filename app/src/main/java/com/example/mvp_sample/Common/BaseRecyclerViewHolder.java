@@ -19,13 +19,11 @@ public abstract class BaseRecyclerViewHolder<T,P> extends RecyclerView.ViewHolde
 
     public BaseRecyclerViewHolder(Context context,View itemView) {
         super(itemView);
-        checkNotNull(context, "Context Is Null");
         this.context = context;
         ButterKnife.bind(this, itemView);
     }
 
     public void setPresenter(P presenter) {
-        checkNotNull(presenter, "Presenter Is Null");
         this.presenter = presenter;
     }
 

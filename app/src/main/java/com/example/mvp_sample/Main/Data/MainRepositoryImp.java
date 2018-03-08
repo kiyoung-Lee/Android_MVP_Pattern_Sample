@@ -20,7 +20,6 @@ public class MainRepositoryImp implements MainRepository {
 
     @Override
     public void getDataList(LoadListCallBack callBack) {
-        checkNotNull(callBack, "CallBack Is Null");
         mainDataList = new ArrayList<>();
         MainData addItem1 = new MainData("test1", "test1", "test1");
         MainData addItem2 = new MainData("test2", "test2", "test2");

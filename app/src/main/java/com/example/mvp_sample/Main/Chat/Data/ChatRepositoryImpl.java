@@ -21,7 +21,6 @@ public class ChatRepositoryImpl implements ChatRepository {
     @Override
     //Unit Test: addChatData_Test(), addChatData_addItem_Null_Test()
     public List<ChatData> addChatData(ChatData addItem) {
-        checkNotNull(addItem, "AddItem Is Null");
         if(chatList == null)
             chatList = new ArrayList<>();
 

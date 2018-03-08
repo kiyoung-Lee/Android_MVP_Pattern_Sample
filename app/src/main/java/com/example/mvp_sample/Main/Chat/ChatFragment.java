@@ -75,7 +75,6 @@ public class ChatFragment extends Fragment implements ChatContract.FragmentView 
     }
 
     public void setMainPresenter(MainContract.Presenter mainPresenter) {
-        checkNotNull(mainPresenter, "MainPresenter Is Null");
         this.mainPresenter = mainPresenter;
     }
 

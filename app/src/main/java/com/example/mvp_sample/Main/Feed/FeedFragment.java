@@ -1,5 +1,6 @@
 package com.example.mvp_sample.Main.Feed;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,8 +37,8 @@ public class FeedFragment extends Fragment implements FeedContract.FragmentView 
     public FeedFragment() {
     }
 
+    @SuppressLint("ValidFragment")
     public FeedFragment(Context context) {
-        checkNotNull(context, "Context Is Null");
         this.context = context;
     }
 

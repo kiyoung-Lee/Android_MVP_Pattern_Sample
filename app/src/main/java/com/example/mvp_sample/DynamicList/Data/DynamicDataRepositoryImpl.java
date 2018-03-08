@@ -14,7 +14,6 @@ public class DynamicDataRepositoryImpl implements DynamicDataRepository {
     @Override
     //Unit Test: getDynamicData_Test(), getDynamicData_Callback_Null_Test()
     public void getDynamicData(onMessageLoadedCallBack callBack) {
-        checkNotNull(callBack, "CallBack Is Null");
         DynamicData dynamicData = new DynamicData(1, "Success", getMessageList());
     }
 

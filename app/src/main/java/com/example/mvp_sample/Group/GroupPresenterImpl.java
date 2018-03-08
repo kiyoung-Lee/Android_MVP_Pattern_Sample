@@ -22,25 +22,21 @@ public class GroupPresenterImpl implements GroupContract.Presenter {
 
     //Unit Test: constructor_Test(), constructor_Null_Test()
     public GroupPresenterImpl(GroupRepository repository) {
-        checkNotNull(repository, "Repository Is Null");
         this.repository = repository;
     }
 
     //Unit Test: setActivityView_Test(), setActivityView_Null_Test()
     public void setActivityView(GroupContract.ActivityView activityView) {
-        checkNotNull(activityView, "ActivityView Is Null");
         this.activityView = activityView;
     }
 
     //Unit Test: setAdapterModel_Test(), setAdapterModel_Null_Test()
     public void setAdapterModel(BaseAdapterContract.Model<List<GroupData>> adapterModel) {
-        checkNotNull(adapterModel, "AdapterModel Is Null");
         this.adapterModel = adapterModel;
     }
 
     //Unit Test: setAdapterView_Test(), setAdapterView_Null_Test()
     public void setAdapterView(BaseAdapterContract.View adapterView) {
-        checkNotNull(adapterView, "AdapterView Is Null");
         this.adapterView = adapterView;
     }
 

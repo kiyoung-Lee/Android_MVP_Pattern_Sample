@@ -11,7 +11,6 @@ public class BackPressClose extends Activity {
 	private Activity activity;
 
 	public BackPressClose(Activity context) {
-		checkNotNull(context, "Context Is Null");
 		this.activity = context;
 	}
 
