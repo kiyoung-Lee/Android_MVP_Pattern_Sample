@@ -23,13 +23,8 @@ import java.util.List;
 public class DynamicListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder>
                                 implements BaseAdapterContract.Model<List<Message>>, BaseAdapterContract.View{
 
-    private Context context;
     private DynamicContract.Presenter presenter;
     private List<Message> messageList;
-
-    public DynamicListAdapter(Context context) {
-        this.context = context;
-    }
 
     @Override
     public int getItemCount() {
@@ -62,8 +57,8 @@ public class DynamicListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHol
     @Override
     public BaseRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int resId = DynamicViewHolderFactory.getViewLayoutId(viewType);
-        View v = LayoutInflater.from(context).inflate(resId, parent);
-        BaseRecyclerViewHolder holder = DynamicViewHolderFactory.getViewHolder(viewType, context, v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(resId, parent);
+        BaseRecyclerViewHolder holder = DynamicViewHolderFactory.getViewHolder(viewType, parent.getContext(), v);
         holder.setPresenter(presenter);
         return holder;
     }
